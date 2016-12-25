@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN"
+    "http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+    <constant name="struts.enable.DynamicMethodInvocation" value="false" />
+    <constant name="struts.devMode" value="false" />
+    <constant name="struts.action.extension" value="shtml,do" />
+    <constant name="struts.objectFactory" value="spring" />   
+    <constant name="struts.custom.i18n.resources" value="messages" /> 
+    <constant name="struts.i18n.encoding" value="UTF-8" /> 
+	<constant name="struts.allowed.action.names" value="[a-z_A-Z0-9]*" />
+	
+	
+    <package name="default" namespace="/" extends="struts-default">
+		<interceptors>
+			<!-- <interceptor name="myInterception" class="com.interceptor.TimeInterceptor"/> -->
+			<interceptor-stack name="myInterceptionStack">
+				<interceptor-ref name="defaultStack"></interceptor-ref>
+				<!-- <interceptor-ref name="myInterception"></interceptor-ref> --> 
+			</interceptor-stack>
+		</interceptors>      
+		
+		<!-- 设定为默认拦截器,同一个package内部的所有Action执行之前都会被拦截 -->
+		<default-interceptor-ref name="myInterceptionStack" /> 
+
+		<global-results>
+			<result name="403" type="chain">index</result>	
+			<result name="input" type="chain">index</result>
+			<result name="invalid.token" type="chain">index</result>
+			<!-- <result name="login" type="chain">index</result>    -->
+		</global-results>
+
+   		<action name="p_*" class="PersonalAction"  method="{1}">
+            <result type="chain" name="success">index</result>
+            <result type="chain" name="result">login</result>      
+            <result type="chain" name="addPersonal">addPersonal</result>      
+            <result type="chain" name="Personallist">listPersonal</result>      
+            <result type="chain" name="modifyerror">modifypw</result>      
+            <result type="chain" name="modifysuccess">modifysuccess</result>      
+            <result type="chain" name="input">login</result>             
+        </action>   
+        
+        <action name="Item_*" class="ItemAction"  method="{1}">
+            <result type="chain" name="itemList">listItem</result>
+            <result type="chain" name="success">listItem</result>
+            <result type="chain" name="addItem">addItem</result>
+            <result type="chain" name="result">login</result>      
+            <result type="chain" name="input">login</result>             
+        </action> 
+        
+        <action name="Dept_*" class="DepartmentAction"  method="{1}">
+            <result type="chain" name="success">listDept</result>
+            <result type="chain" name="result">addDept</result>      
+            <result type="chain" name="input">addDept</result>             
+        </action> 
+        
+        <action name="Trans_*" class="UseAction"  method="{1}">
+           <result type="chain" name="transList">listTrans</result>
+            <result type="chain" name="success">listTrans</result>
+            <result type="chain" name="addTrans">addTrans</result>   
+            <result type="chain" name="input">login</result>             
+        </action> 
+        
+        <action name="Payment_*" class="PaymentAction"  method="{1}">
+            <result type="chain" name="success">listPayment</result>
+            <result type="chain" name="paymentList">listPayment</result>
+            <result type="chain" name="addPayment">addPayment</result> 
+            <result type="chain" name="result">login</result>      
+            <result type="chain" name="input">login</result>             
+        </action> 
+        
+          <action name="Report_*" class="ReportAction"  method="{1}">
+            <result type="chain" name="resourceAvailableList">resourceAvailableList</result>
+            <result type="chain" name="resourceWithPaymentList">resourceWithPaymentList</result>
+            <result type="chain" name="result">addDept</result>      
+            <result type="chain" name="input">addDept</result>             
+        </action> 
+    </package>
+
+	<include file="struts-static.xml"></include>
+</struts>
