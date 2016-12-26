@@ -11,7 +11,7 @@
 <body>
 <div class="leftFrameContent">
 <div class="content">
-<div class="formTitle"> Add Department</div>
+<div class="formTitle"> Add Department(changing check)</div>
 	<form class="form" action="Dept_add.shtml" id="DeptAddFormId">
 	<dl>
 					<dd>
