@@ -4,6 +4,8 @@ import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Dimension;
@@ -17,12 +19,18 @@ import java.util.Random;
 
 import javax.swing.JProgressBar;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 
-public class ApplicationWindow {
+public class ApplicationWindow extends JFrame{
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 2151022639739728226L;
 	private JFrame frame;
 	private JFrame playerSetting;
 	private JFrame openging;
@@ -34,6 +42,8 @@ public class ApplicationWindow {
 	private JProgressBar HP2;
 	private JLabel labelHP_1;
 	private JLabel labelHP_2;
+	private JLabel show1;
+	private JLabel show2;
 	private static ArrayList<Armor> ArmorList = new ArrayList<Armor>();
 	private static ArrayList<Weapon> WeaponList = new ArrayList<Weapon>();
 	private static ArrayList<Opponents> OpponentsList = new ArrayList<Opponents>();
@@ -44,12 +54,13 @@ public class ApplicationWindow {
 		ArmorList.add(new Armor("Heavy",35,-25));
 		
 		WeaponList.add(new Weapon("Dagger",20,0));
-		WeaponList.add(new Weapon("Sword",30,10));
-		WeaponList.add(new Weapon("Battle Axe",40,20));
+		WeaponList.add(new Weapon("Sword",30,-10));
+		WeaponList.add(new Weapon("Battle Axe",40,-20));
 		
 		OpponentsList.add(new Opponents("Thief",150,20,10,40,""));
 		OpponentsList.add(new Opponents("Viking",250,30,20,30,""));
 		OpponentsList.add(new Opponents("Minotaur",350,40,30,20,""));
+		
 	}
 	
 	/**
@@ -60,8 +71,8 @@ public class ApplicationWindow {
 			public void run() {
 				try {
 					ApplicationWindow window = new ApplicationWindow();
-					window.openging.setVisible(true);
-					window.playerSetting.setVisible(false);
+					//window.openging.setVisible(true);
+					window.playerSetting.setVisible(true);
 					window.frame.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -81,7 +92,21 @@ public class ApplicationWindow {
 	 * first loading Interface -> progressBar
 	 */
 	
-	private void firstLoading(JProgressBar progressBar){
+	private void firstLoading(){
+		//Loading UI
+		openging = new JFrame();
+		openging.setBounds(100, 100, 450, 355);
+		openging.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		openging.getContentPane().setLayout(null);
+		
+		JProgressBar progressBar = new JProgressBar();
+		progressBar.setBounds(155, 146, 146, 14);
+		openging.getContentPane().add(progressBar);
+        
+        JLabel lblLoading = new JLabel("Loading...");
+        lblLoading.setBounds(191, 121, 64, 14);
+        openging.getContentPane().add(lblLoading);
+		        
 		progressBar.setStringPainted(true);
 	    progressBar.setIndeterminate(false);
 	    
@@ -110,25 +135,12 @@ public class ApplicationWindow {
 		th.start();// Thread started
 	}
 	
+	 
 	/**
 	 * Initialize the contents of the UI.
 	 */
 	private void initialize() {
-		//Loading UI
-		openging = new JFrame();
-		openging.setBounds(100, 100, 450, 355);
-		openging.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		openging.getContentPane().setLayout(null);
-		
-		JProgressBar progressBar = new JProgressBar();
-		progressBar.setBounds(155, 146, 146, 14);
-		openging.getContentPane().add(progressBar);
-        
-        JLabel lblLoading = new JLabel("Loading...");
-        lblLoading.setBounds(191, 121, 64, 14);
-        openging.getContentPane().add(lblLoading);
-       
-        firstLoading(progressBar);  //function for progressBar to take effect
+       // firstLoading();  //function for progressBar to take effect
 		
 	    //player settings
 		playerSetting();
@@ -136,44 +148,64 @@ public class ApplicationWindow {
 	        
 		frame = new JFrame();  //Main UI
 		frame.setBounds(100, 100, 450, 355);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		frame.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				// "X" pressed
+				int option = JOptionPane.showConfirmDialog(ApplicationWindow.this, "Are you sure to go back?",
+						" Notification", JOptionPane.OK_CANCEL_OPTION);
+				if (JOptionPane.OK_OPTION == option) {
+					// conform button clicked,then exit 
+					frame.hide();
+					playerSetting.show();
+				} else {
+					ApplicationWindow.this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				}
+			}
+		});
 		
 		JLabel lblTitle1 = new JLabel("Warrior");
 		lblTitle1.setBounds(10, 11, 46, 14);
 		frame.getContentPane().add(lblTitle1);
 		
 		JLabel lblTitle2 = new JLabel("Minotaur");
-		lblTitle2.setBounds(278, 11, 46, 14);
+		lblTitle2.setBounds(278, 11, 62, 14);
 		frame.getContentPane().add(lblTitle2);
 		
 		HP1 = new JProgressBar();
 		HP1.setBounds(10, 29, 146, 14);
+		HP1.setIndeterminate(false);
+		HP1.setStringPainted(true);
 		frame.getContentPane().add(HP1);
 		
 		HP2 = new JProgressBar();
 		HP2.setBounds(278, 29, 146, 14);
+		HP2.setIndeterminate(false);
+		HP2.setStringPainted(true);
 		frame.getContentPane().add(HP2);
 		
-		JButton button = new JButton("New button");
-		button.setBounds(20, 121, 89, 23);
-		frame.getContentPane().add(button);
 		
 		 int testHP1= 10;
-		JButton btnNewButton = new JButton("teseting ");
-		btnNewButton.addActionListener(new ActionListener() {
+		JButton btnAttack = new JButton("ATTACK");
+		btnAttack.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				
 				setHPValue(1,testHP1);
+				testOutput();
 			}
 		});
-		btnNewButton.setBounds(20, 54, 89, 23);
-		frame.getContentPane().add(btnNewButton);
+		btnAttack.setBounds(20, 50, 80, 23);
+		frame.getContentPane().add(btnAttack);
 		
-		JButton btnNewButton_1 = new JButton("New button");
-		btnNewButton_1.setBounds(20, 87, 89, 23);
-		frame.getContentPane().add(btnNewButton_1);
+		JButton btnDefend = new JButton("DEFEND");
+		btnDefend.setBounds(20, 80, 80, 23);
+		frame.getContentPane().add(btnDefend);
+		
+		JButton btnCharge = new JButton("CHARGE");
+		btnCharge.setBounds(20, 110, 80, 23);
+		frame.getContentPane().add(btnCharge);
 		
 		labelHP_1 = new JLabel();
 		labelHP_1.setBounds(110, 11, 46, 14);
@@ -183,27 +215,106 @@ public class ApplicationWindow {
 		labelHP_2.setBounds(378, 11, 46, 14);
 		frame.getContentPane().add(labelHP_2);
 		
+		show1 = new JLabel("New label");
+		show1.setBounds(110, 149, 46, 14);
+		frame.getContentPane().add(show1);
+		
+		show2 = new JLabel("New label");
+		show2.setBounds(278, 114, 46, 14);
+		frame.getContentPane().add(show2);
+		
 		
 	}
 	
+	// phase i, auto attack by Minotaur
+	public int fightingResult(Character first,Opponents second){
+		int r =0;
+		int nHP1=first.getHP();
+		int nHP2=second.getnHP();
+		
+        Thread th = new Thread();
+		th.start();// Thread started
+		
+		  while (nHP1 > 0 && nHP2 > 0) {
+			   int x= second.getnAtk()-first.getDef();
+			   System.out.print("fighting"+x);
+			   nHP1-=x;
+			   nHP1=nHP1<0?0:nHP1;
+			   setHPValue(1,nHP1);
+			   setHPValue(2,nHP2);
+
+               try {
+            	   th.sleep(1000); // thread randomly slept
+               } catch (InterruptedException ignore) {
+               }
+           }
+		  
+		return r;
+	}
+	// print for testing
+	private void testOutput(){
+		System.out.println("player HP:"+player.getHP());
+		System.out.println("player Atk:"+player.getAtk());
+		System.out.println("player Def:"+player.getDef());
+		System.out.println("player Speed:"+player.getSpd());
+		
+		System.out.println("opponent HP:"+opponent.getnHP());
+		System.out.println("opponent Atk:"+opponent.getnAtk());
+		System.out.println("opponent Def:"+opponent.getnDef());
+		System.out.println("opponent Speed:"+opponent.getnSpd());
+		
+	}
+	//show text
+	private void showText(JLabel l,String s){
+		l.setText("0".equals(s)?"":("-"+s));
+		
+		  Thread t=new Thread();
+		  t.start();
+				 try {
+					t.sleep(500);
+				} catch (InterruptedException e) {
+					e.printStackTrace();
+				}
+				 l.setText("");
+	}
 	private void setHPValue(Integer x,Integer nHP){
+		
 		if (x==1){
 			HP1.setValue(nHP);
 			labelHP_1.setText(nHP.toString());
+			showText(show1,String.valueOf(player.getHP()-nHP));
+			player.setHP(nHP);  //update HP
 		}else if (x==2){
 			HP2.setValue(nHP);
 			labelHP_2.setText(nHP.toString());
+			showText(show2,String.valueOf(opponent.getnHP()-nHP));
+			opponent.setnHP(nHP);  //update HP
 		}
 		
 	}
 	private void playerSetting() {
 		playerSetting = new JFrame();
 		playerSetting.setBounds(100, 100, 450, 355);
-		playerSetting.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		playerSetting.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		playerSetting.getContentPane().setLayout(null);
 		
+		//playerSetting exit event
+		playerSetting.addWindowListener(new WindowAdapter() {
+			public void windowClosing(WindowEvent e) {
+				// "X" pressed
+				int option = JOptionPane.showConfirmDialog(ApplicationWindow.this, "Are you sure to exit?",
+						" Notification", JOptionPane.OK_CANCEL_OPTION);
+				if (JOptionPane.OK_OPTION == option) {
+					// conform button clicked,then exit 
+					System.exit(0);
+				} else {
+					ApplicationWindow.this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
+				}
+			}
+		});
+		
 		JLabel lblNewLabel = new JLabel("Armor:");
-		lblNewLabel.setBounds(70, 54, 73, 14);
+		lblNewLabel.setBounds(59, 54, 84, 14);
 		playerSetting.getContentPane().add(lblNewLabel);
 		
 		JComboBox comboBoxArmor = new JComboBox();
@@ -212,7 +323,7 @@ public class ApplicationWindow {
 		playerSetting.getContentPane().add(comboBoxArmor);
 		
 		JLabel lblWeapon = new JLabel("Weapon:");
-		lblWeapon.setBounds(70, 94, 73, 14);
+		lblWeapon.setBounds(59, 94, 84, 14);
 		playerSetting.getContentPane().add(lblWeapon);
 		
 		
@@ -222,7 +333,7 @@ public class ApplicationWindow {
 		playerSetting.getContentPane().add(comboBoxWeapon);
 		
 		JLabel lblOpponent = new JLabel("Opponent:");
-		lblOpponent.setBounds(70, 134, 73, 14);
+		lblOpponent.setBounds(59, 134, 84, 14);
 		playerSetting.getContentPane().add(lblOpponent);
 		
 		JComboBox comboBoxOpponent = new JComboBox();
@@ -231,7 +342,7 @@ public class ApplicationWindow {
 		playerSetting.getContentPane().add(comboBoxOpponent);
 		
 		JLabel lblEnvironment = new JLabel("Environment:");
-		lblEnvironment.setBounds(70, 174, 73, 14);
+		lblEnvironment.setBounds(59, 174, 84, 14);
 		playerSetting.getContentPane().add(lblEnvironment);
 		
 		JComboBox comboBoxEnvt = new JComboBox();
@@ -243,6 +354,7 @@ public class ApplicationWindow {
 		JButton btnNewButton = new JButton("Start");
 		btnNewButton.setBounds(185, 268, 89, 23);
 		playerSetting.getContentPane().add(btnNewButton);
+		
 		//Start button click function, initiate data after setting
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -276,21 +388,43 @@ public class ApplicationWindow {
 				player = new Character(ArmorList.get(indexArmor),WeaponList.get(indexWeapon));
 				opponent= OpponentsList.get(indexOpponent);
 				
-				System.out.println("HP:"+player.getHP());
-				System.out.println("HP:"+opponent.getnHP());
+				//take effects from the environment 
+				int indexEnvt=0;
+				for (int i=0;i<3;i++){
+					if (i==comboBoxEnvt.getSelectedIndex()){
+						indexEnvt=i;
+						break;
+					}
+				};
+				if(indexEnvt==1){
+					player.setHP(player.getHP()-1);
+					opponent.setnAtk(opponent.getnAtk()+1);
+				}else if (indexEnvt==2){
+					player.setAtk(player.getAtk()+1);
+					opponent.setnDef(opponent.getnDef()-1);
+				}
 				
 				playerSetting.setVisible(false);
 				frame.setVisible(true);
-				HP1.setIndeterminate(false);
+				
 				HP1.setMaximum(player.getHP());
 				setHPValue(1,player.getHP());
 				
-				HP2.setStringPainted(true);
-				HP2.setIndeterminate(false);
+				
 				HP2.setMaximum(opponent.getnHP());
-				setHPValue(1,player.getHP());
-				HP2.setValue(100);
-				labelHP_2.setText(opponent.getnHP().toString());
+				setHPValue(2,opponent.getnHP());
+				
+				testOutput();
+				Thread t = new Thread(new Runnable(){
+					@Override
+					public void run() {
+						fightingResult(player,opponent);
+					}
+				});
+				t.start();
+				
+				/*HP2.setValue(100);
+				labelHP_2.setText(opponent.getnHP().toString());*/
 			}
 		});
 		
@@ -298,5 +432,4 @@ public class ApplicationWindow {
 		
 		
 	}
-
 }

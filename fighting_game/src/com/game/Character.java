@@ -10,7 +10,7 @@ public class Character {
 		this.HP=100;
 		this.Def=this.Def+a.getnDef();
 		this.Atk=this.Atk+w.getnAtk();
-		this.Spd=this.Atk+a.getnSpdPlt()+w.getnSpdPlt();
+		this.Spd=this.Spd+a.getnSpdPlt()+w.getnSpdPlt();
 		
 	}
 	public Integer getHP() {
