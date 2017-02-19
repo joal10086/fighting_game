@@ -24,29 +24,27 @@ public class ApplicationWindow extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 2151022639739728226L;
-	 public volatile boolean exit = false; 
+	public volatile boolean exit = false;   //
 	private JFrame frame;
 	private JFrame playerSetting;
 	private JFrame openging;
-	
-	private Character player;
-	private Opponents opponent;
-	
 	private JProgressBar HP1;
 	private JProgressBar HP2;
 	private JLabel labelHP_1;
 	private JLabel labelHP_2;
 	private JLabel show1;
 	private JLabel show2;
+	private Character player;
+	private Opponents opponent;
 	private int nHP1;
 	private int nHP2;
-	private static ArrayList<Armor> ArmorList = new ArrayList<Armor>();
-	private static ArrayList<Weapon> WeaponList = new ArrayList<Weapon>();
-	private static ArrayList<Opponents> OpponentsList = new ArrayList<Opponents>();
+	private ArrayList<Armor> ArmorList = new ArrayList<Armor>();
+	private ArrayList<Weapon> WeaponList = new ArrayList<Weapon>();
+	private ArrayList<Opponents> OpponentsList = new ArrayList<Opponents>();
 	
 	Thread th;
 	
-	static {
+	private void dataInitial(){
 		ArmorList.add(new Armor("Light",15,-5));
 		ArmorList.add(new Armor("Medium",25,-15));
 		ArmorList.add(new Armor("Heavy",35,-25));
@@ -83,7 +81,8 @@ public class ApplicationWindow extends JFrame{
 	 * Constructor. Create the application.
 	 */
 	public ApplicationWindow() {
-		initialize();
+		dataInitial();  //loading data
+		initialize();  //loading UI
 	}
 
 	/**
@@ -160,10 +159,9 @@ public class ApplicationWindow extends JFrame{
 					try {
 						th.join();
 					} catch (InterruptedException e1) {
-						// TODO Auto-generated catch block
 						e1.printStackTrace();
 					} 
-			         System.out.println("thread exit!"); 
+			         System.out.println("Thread exit!"); 
 					frame.hide();
 					playerSetting.show();
 				} else {
@@ -242,15 +240,28 @@ public class ApplicationWindow extends JFrame{
 			@Override
 			public void run(){
 				  while (nHP1 > 0 && nHP2 > 0 &&(!exit)) {
-					   int x= second.getnAtk()-first.getDef();
-					   System.out.print("fighting"+x);
-					   nHP1-=x;
-					   nHP1=nHP1<0?0:nHP1;
+					   int nO2P= second.getnAtk()-first.getDef(); 
+					   int nP2O = first.getAtk()-second.getnDef();
+					   System.out.print("opponent attacks player:"+nO2P+">player attacks opponent:"+nP2O);
+					  /* if (nP2O>0){  // player attacks opponent
+						   nHP2-=nP2O;
+						   nHP2=nHP2<0?0:nHP2;
+					   }else */if (nO2P>0){  // opponent attacks player
+						   nHP1-=nO2P;
+						   nHP1=nHP1<0?0:nHP1;
+					   }/*else if (nO2P<=0){  
+						   nHP1-=1;
+						   nHP1=nHP1<0?0:nHP1;
+						   
+						   nHP2-=1;
+						   nHP2=nHP2<0?0:nHP2;
+					   }*/
+					  
 					   setHPValue(1,nHP1);
 					   setHPValue(2,nHP2);
 
 					  try {
-						Thread.sleep(1000);
+						Thread.sleep(800);
 					} catch (InterruptedException e) {
 						// TODO Auto-generated catch block
 						e.printStackTrace();
@@ -291,7 +302,6 @@ public class ApplicationWindow extends JFrame{
 				 l.setText("");
 	}
 	private void setHPValue(Integer x,Integer nHP){
-		
 		if (x==1){
 			HP1.setValue(nHP);
 			labelHP_1.setText(nHP.toString());
@@ -398,6 +408,7 @@ public class ApplicationWindow extends JFrame{
 					}
 				};
 				
+				dataInitial();
 				player = new Character(ArmorList.get(indexArmor),WeaponList.get(indexWeapon));
 				opponent= OpponentsList.get(indexOpponent);
 				
