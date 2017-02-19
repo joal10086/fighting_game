@@ -1,11 +1,12 @@
 package com.game;
 
 import java.awt.EventQueue;
+import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-
+import javax.swing.JPanel;
 import javax.swing.JButton;
 import java.util.ArrayList;
 import java.util.Random;
@@ -17,6 +18,7 @@ import java.awt.event.WindowEvent;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
+import javax.swing.ImageIcon;
 
 public class ApplicationWindow extends JFrame{
 
@@ -144,9 +146,26 @@ public class ApplicationWindow extends JFrame{
 		
 	        
 		frame = new JFrame();  //Main UI
-		frame.setBounds(100, 100, 450, 355);
+		frame.setBounds(300, 100, 550, 455);
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
+		
+		ImageIcon background = new ImageIcon("img/bg.jpg");// 背景图片
+		JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
+		// 把标签的大小位置设置为图片刚好填充整个面板
+		label.setBounds(0, 0, 550, 455);
+		// 把内容窗格转化为JPanel，否则不能用方法setOpaque()来使内容窗格透明
+		JPanel imagePanel = (JPanel) frame.getContentPane();
+		imagePanel.setOpaque(false);
+		// 内容窗格默认的布局管理器为BorderLayout
+		imagePanel.setLayout(null);
+		imagePanel.add(new JButton("测试按钮"));
+		frame.getLayeredPane().setLayout(null);
+		// 把背景图片添加到分层窗格的最底层作为背景
+		frame.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
+		frame.setSize(550, 455);
+		frame.setResizable(false);
+		frame.setVisible(true);
 		
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -220,7 +239,7 @@ public class ApplicationWindow extends JFrame{
 		frame.getContentPane().add(labelHP_2);
 		
 		show1 = new JLabel("New label");
-		show1.setBounds(110, 149, 46, 14);
+		show1.setBounds(110, 149, 301, 14);
 		frame.getContentPane().add(show1);
 		
 		show2 = new JLabel("New label");
@@ -249,16 +268,15 @@ public class ApplicationWindow extends JFrame{
 					   }else */if (nO2P>0){  // opponent attacks player
 						   nHP1-=nO2P;
 						   nHP1=nHP1<0?0:nHP1;
-					   }/*else if (nO2P<=0){  
-						   nHP1-=1;
-						   nHP1=nHP1<0?0:nHP1;
-						   
-						   nHP2-=1;
-						   nHP2=nHP2<0?0:nHP2;
-					   }*/
+						   setHPValue(1,nHP1);
+						   setHPValue(2,nHP2);
+					   }else if (nO2P<=0){   //opponent can't attack player, set to game over
+						   nHP1=0;
+						   nHP2=0;
+						   showText(show1,"opponent can't attack player");
+					   }
 					  
-					   setHPValue(1,nHP1);
-					   setHPValue(2,nHP2);
+					  
 
 					  try {
 						Thread.sleep(800);
@@ -266,12 +284,23 @@ public class ApplicationWindow extends JFrame{
 						// TODO Auto-generated catch block
 						e.printStackTrace();
 					} 
-		           }				
+		           }	
+			
+					if(nHP1 <= 0 || nHP2 <= 0){  // one of them has no HP, game over
+						int option = JOptionPane.showConfirmDialog(ApplicationWindow.this, "Game Over!",
+								" Notification", JOptionPane.DEFAULT_OPTION);
+							frame.hide();
+							playerSetting.show();
+					}
+					
 			}
         	
         });
 		th.start();// Thread started
 		
+		  //gameOver
+	
+		  
 		  
 		return r;
 	}
@@ -290,16 +319,21 @@ public class ApplicationWindow extends JFrame{
 	}
 	//show text
 	private void showText(JLabel l,String s){
-		l.setText("0".equals(s)?"":("-"+s));
-		
-		  Thread t=new Thread();
-		  t.start();
-				 try {
-					t.sleep(500);
-				} catch (InterruptedException e) {
-					e.printStackTrace();
-				}
-				 l.setText("");
+		if (s.length() < 10) {
+			l.setText("0".equals(s)?"":("-"+s));
+			Thread t = new Thread();
+			t.start();
+			try {
+				t.sleep(500);
+			} catch (InterruptedException e) {
+				e.printStackTrace();
+			}
+			l.setText("");
+		} else {
+			// test message
+			l.setText(s);
+		}
+
 	}
 	private void setHPValue(Integer x,Integer nHP){
 		if (x==1){
