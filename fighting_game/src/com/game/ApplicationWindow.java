@@ -6,14 +6,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Dimension;
-import java.awt.GridBagLayout;
 import javax.swing.JButton;
-import java.awt.GridBagConstraints;
-import javax.swing.JPanel;
-import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -31,6 +24,7 @@ public class ApplicationWindow extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 2151022639739728226L;
+	 public volatile boolean exit = false; 
 	private JFrame frame;
 	private JFrame playerSetting;
 	private JFrame openging;
@@ -44,9 +38,13 @@ public class ApplicationWindow extends JFrame{
 	private JLabel labelHP_2;
 	private JLabel show1;
 	private JLabel show2;
+	private int nHP1;
+	private int nHP2;
 	private static ArrayList<Armor> ArmorList = new ArrayList<Armor>();
 	private static ArrayList<Weapon> WeaponList = new ArrayList<Weapon>();
 	private static ArrayList<Opponents> OpponentsList = new ArrayList<Opponents>();
+	
+	Thread th;
 	
 	static {
 		ArmorList.add(new Armor("Light",15,-5));
@@ -111,7 +109,7 @@ public class ApplicationWindow extends JFrame{
 	    progressBar.setIndeterminate(false);
 	    
 		Random random = new Random();
-        Thread th = new Thread(new Runnable() {
+        th = new Thread(new Runnable() {
         	int progress = 0;
 			@Override
 			public void run() {
@@ -158,6 +156,14 @@ public class ApplicationWindow extends JFrame{
 						" Notification", JOptionPane.OK_CANCEL_OPTION);
 				if (JOptionPane.OK_OPTION == option) {
 					// conform button clicked,then exit 
+					exit = true;
+					try {
+						th.join();
+					} catch (InterruptedException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					} 
+			         System.out.println("thread exit!"); 
 					frame.hide();
 					playerSetting.show();
 				} else {
@@ -229,25 +235,32 @@ public class ApplicationWindow extends JFrame{
 	// phase i, auto attack by Minotaur
 	public int fightingResult(Character first,Opponents second){
 		int r =0;
-		int nHP1=first.getHP();
-		int nHP2=second.getnHP();
+		nHP1=first.getHP();
+		nHP2=second.getnHP();
 		
-        Thread th = new Thread();
+         th= new Thread(new Runnable() {
+			@Override
+			public void run(){
+				  while (nHP1 > 0 && nHP2 > 0 &&(!exit)) {
+					   int x= second.getnAtk()-first.getDef();
+					   System.out.print("fighting"+x);
+					   nHP1-=x;
+					   nHP1=nHP1<0?0:nHP1;
+					   setHPValue(1,nHP1);
+					   setHPValue(2,nHP2);
+
+					  try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					} 
+		           }				
+			}
+        	
+        });
 		th.start();// Thread started
 		
-		  while (nHP1 > 0 && nHP2 > 0) {
-			   int x= second.getnAtk()-first.getDef();
-			   System.out.print("fighting"+x);
-			   nHP1-=x;
-			   nHP1=nHP1<0?0:nHP1;
-			   setHPValue(1,nHP1);
-			   setHPValue(2,nHP2);
-
-               try {
-            	   th.sleep(1000); // thread randomly slept
-               } catch (InterruptedException ignore) {
-               }
-           }
 		  
 		return r;
 	}
@@ -415,13 +428,9 @@ public class ApplicationWindow extends JFrame{
 				setHPValue(2,opponent.getnHP());
 				
 				testOutput();
-				Thread t = new Thread(new Runnable(){
-					@Override
-					public void run() {
-						fightingResult(player,opponent);
-					}
-				});
-				t.start();
+				exit=false;
+				fightingResult(player,opponent);
+			 
 				
 				/*HP2.setValue(100);
 				labelHP_2.setText(opponent.getnHP().toString());*/
