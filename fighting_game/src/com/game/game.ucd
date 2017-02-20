@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="game" size="1203,900" id="com.game" metadata="uml2-1.0" initialized="true" tag="10" key="32303037303533312D3130206669676874696E675F67616D65">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="game" size="1203,900" id="com.game" metadata="uml2-1.0" initialized="true" scrolledY="310" tag="10" key="32303037303533312D3130206669676874696E675F67616D65">
   <children xsi:type="editmodel:ClassEditModel" name="Weapon" location="840,75" size="303,229" id="com.game/Weapon" runTimeClassModel="">
     <children xsi:type="editmodel:CompartmentEditModel" size="94,54">
       <children xsi:type="editmodel:AttributeEditModel" name="sType" id="com.game/Weapon#sType"/>
@@ -83,18 +83,18 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/ApplicationWindow@appWindow+com.game/Character@character" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.1" label="//@children.2/@sourceConnections.0/@children.2" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
       <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="0,177" id="com.game/ApplicationWindow@appWindow+com.game/Character@character|com.game/Character#character" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name="- character" location="419,186" size="54,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name=" - character" location="416,186" size="57,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="0..1" location="455,214" size="18,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="appWindow" location="297,177" id="com.game/ApplicationWindow@appWindow+com.game/Character@character|com.game/ApplicationWindow#appWindow" multiplicityLabel="//@children.2/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - appWindow" location="334,186" size="68,14" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="334,214" size="18,14" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="appWindow" location="297,187" id="com.game/ApplicationWindow@appWindow+com.game/Character@character|com.game/ApplicationWindow#appWindow" multiplicityLabel="//@children.2/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - appWindow" location="324,186" size="68,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="324,214" size="18,14" anchorKind="LastPart"/>
       </children>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.4/@sourceConnections.0" name="ApplicationWindow" location="30,30" size="297,481" id="com.game/ApplicationWindow" runTimeClassModel="">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.4/@sourceConnections.0" name="ApplicationWindow" location="20,20" size="297,499" id="com.game/ApplicationWindow" runTimeClassModel="ApplicationWindow(),hP1,nHP1,hP2,nHP2,show2,tripled,openging,show1,main([Ljava.lang.String;),playerSetting(),serialVersionUID,opponent,showText(Ljavax.swing.JLabel;Ljava.lang.String;),player,firstLoading(),setHPValue(Ljava.lang.Integer;Ljava.lang.Integer;),fightingResult(Lcom.game.Character;Lcom.game.Opponents;Ljava.lang.String;),labelHP_1,playerSetting,labelHP_2,initialize(),testOutput(),lblTitle2,frame">
     <children xsi:type="editmodel:CompartmentEditModel" size="124,288">
       <children xsi:type="editmodel:AttributeEditModel" name="serialVersionUID" id="com.game/ApplicationWindow#serialVersionUID"/>
       <children xsi:type="editmodel:AttributeEditModel" name="tripled" id="com.game/ApplicationWindow#tripled"/>
@@ -113,7 +113,8 @@
       <children xsi:type="editmodel:AttributeEditModel" name="nHP1" id="com.game/ApplicationWindow#nHP1"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nHP2" id="com.game/ApplicationWindow#nHP2"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="274,144">
+    <children xsi:type="editmodel:CompartmentEditModel" size="274,162">
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="com.game/ApplicationWindow#main([Ljava.lang.String;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="ApplicationWindow" id="com.game/ApplicationWindow#ApplicationWindow()"/>
       <children xsi:type="editmodel:MethodEditModel" name="firstLoading" id="com.game/ApplicationWindow#firstLoading()"/>
       <children xsi:type="editmodel:MethodEditModel" name="initialize" id="com.game/ApplicationWindow#initialize()"/>
@@ -159,9 +160,9 @@
         <children xsi:type="editmodel:LabelEditModel" name=" - opponents" location="392,534" size="61,14" anchorKind="FirstPart"/>
         <children xsi:type="editmodel:LabelEditModel" name="0..1" location="360,534" size="18,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="applicationWindow" location="297,471" id="com.game/ApplicationWindow@applicationWindow+com.game/Opponents@opponents|com.game/ApplicationWindow#applicationWindow" multiplicityLabel="//@children.4/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - applicationWindow" location="334,480" size="101,14" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="334,508" size="18,14" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="applicationWindow" location="297,489" id="com.game/ApplicationWindow@applicationWindow+com.game/Opponents@opponents|com.game/ApplicationWindow#applicationWindow" multiplicityLabel="//@children.4/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - applicationWindow" location="324,488" size="101,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="324,516" size="18,14" anchorKind="LastPart"/>
       </children>
       <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
