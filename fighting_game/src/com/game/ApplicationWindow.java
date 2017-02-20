@@ -235,11 +235,11 @@ public class ApplicationWindow extends JFrame{
 	}
 	
 	// fighting procedure to accept actions and  control the fighting data
-	private void fightingResult(Character first,Opponents second,String string){
+	private void fightingResult(Character C,Opponents O,String s){
 		
-		nHP1=first.getHP();
-		nHP2=second.getnHP();
-		System.out.println("first.getAtk()"+first.getAtk());
+		nHP1=C.getHP();
+		nHP2=O.getnHP();
+		System.out.println("first.getAtk()"+C.getAtk());
 		Thread th= new Thread(new Runnable() {
 			int r = 0;
 
@@ -247,21 +247,21 @@ public class ApplicationWindow extends JFrame{
 			public void run() {
 
 				if (nHP1 > 0 && nHP2 > 0) { // game continue
-					if ("1".equals(string)) { // player attack
-						r = first.getAtk() - second.getnDef();
+					if ("1".equals(s)) { // player attack
+						r = C.getAtk() - O.getnDef();
 						if (tripled) {
-							first.setAtk(first.getAtk() / 3);
+							C.setAtk(C.getAtk() / 3);
 							tripled = false;
 						}
 
-					} else if ("2".equals(string)) { // player defend
-						r = (int) Math.ceil((first.getDef() - second.getnAtk()) / 2);
-					} else if ("3".equals(string)) { // player charge
-						r = first.getDef() - second.getnAtk();
+					} else if ("2".equals(s)) { // player defend
+						r = (int) Math.ceil((C.getDef() - O.getnAtk()) / 2);
+					} else if ("3".equals(s)) { // player charge
+						r = C.getDef() - O.getnAtk();
 
 						if (!tripled) { // charge button first click
 							tripled = true;
-							first.setAtk(first.getAtk() * 3);
+							C.setAtk(C.getAtk() * 3);
 						} else { // charge button click again
 							r = 0;
 							JOptionPane.showConfirmDialog(ApplicationWindow.this, "player already set to charge!",
