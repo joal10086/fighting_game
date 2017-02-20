@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="game" size="1158,751" id="com.game" metadata="uml2-1.0" initialized="true" scrolledX="230" tag="10" key="32303037303533312D3130206669676874696E675F67616D65">
+  <children xsi:type="editmodel:ClassEditModel" name="Weapon" location="880,25" size="303,229" id="com.game/Weapon" runTimeClassModel="getnAtk(),sType,setnSpdPlt(Ljava.lang.Integer;),Weapon(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;),nSpdPlt,setsType(Ljava.lang.String;),getnSpdPlt(),nAtk,setnAtk(Ljava.lang.Integer;),getsType()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="sType" id="com.game/Weapon#sType"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nAtk" id="com.game/Weapon#nAtk"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nSpdPlt" id="com.game/Weapon#nSpdPlt"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="280,126">
+      <children xsi:type="editmodel:MethodEditModel" name="getsType" id="com.game/Weapon#getsType()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setsType" id="com.game/Weapon#setsType(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnAtk" id="com.game/Weapon#getnAtk()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnAtk" id="com.game/Weapon#setnAtk(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnSpdPlt" id="com.game/Weapon#getnSpdPlt()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnSpdPlt" id="com.game/Weapon#setnSpdPlt(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Weapon" id="com.game/Weapon#Weapon(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Armor" location="885,270" size="293,229" id="com.game/Armor" runTimeClassModel="sType,setnSpdPlt(Ljava.lang.Integer;),nDef,nSpdPlt,setsType(Ljava.lang.String;),getnSpdPlt(),setnDef(Ljava.lang.Integer;),getnDef(),Armor(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;),getsType()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,54">
+      <children xsi:type="editmodel:AttributeEditModel" name="sType" id="com.game/Armor#sType"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nDef" id="com.game/Armor#nDef"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nSpdPlt" id="com.game/Armor#nSpdPlt"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="270,126">
+      <children xsi:type="editmodel:MethodEditModel" name="getsType" id="com.game/Armor#getsType()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setsType" id="com.game/Armor#setsType(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnDef" id="com.game/Armor#getnDef()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnDef" id="com.game/Armor#setnDef(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnSpdPlt" id="com.game/Armor#getnSpdPlt()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnSpdPlt" id="com.game/Armor#setnSpdPlt(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Armor" id="com.game/Armor#Armor(Ljava.lang.String;Ljava.lang.Integer;Ljava.lang.Integer;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Character" location="465,30" size="227,355" id="com.game/Character" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="178,108">
+      <children xsi:type="editmodel:AttributeEditModel" name="hP" id="com.game/Character#hP"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="atk" id="com.game/Character#atk"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="def" id="com.game/Character#def"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="spd" id="com.game/Character#spd"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="armorList" id="com.game/Character#armorList"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="weaponList" id="com.game/Character#weaponList"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="204,198">
+      <children xsi:type="editmodel:MethodEditModel" name="getArmorList" id="com.game/Character#getArmorList()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getWeaponList" id="com.game/Character#getWeaponList()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Character" id="com.game/Character#Character(II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getHP" id="com.game/Character#getHP()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHP" id="com.game/Character#setHP(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getAtk" id="com.game/Character#getAtk()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setAtk" id="com.game/Character#setAtk(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getDef" id="com.game/Character#getDef()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setDef" id="com.game/Character#setDef(Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getSpd" id="com.game/Character#getSpd()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setSpd" id="com.game/Character#setSpd(Ljava.lang.Integer;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="ApplicationWindow" location="30,30" size="311,499" id="com.game/ApplicationWindow" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="124,288">
+      <children xsi:type="editmodel:AttributeEditModel" name="serialVersionUID" id="com.game/ApplicationWindow#serialVersionUID"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="tripled" id="com.game/ApplicationWindow#tripled"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="frame" id="com.game/ApplicationWindow#frame"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="playerSetting" id="com.game/ApplicationWindow#playerSetting"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="openging" id="com.game/ApplicationWindow#openging"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="hP1" id="com.game/ApplicationWindow#hP1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="hP2" id="com.game/ApplicationWindow#hP2"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="labelHP_1" id="com.game/ApplicationWindow#labelHP_1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="labelHP_2" id="com.game/ApplicationWindow#labelHP_2"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="lblTitle2" id="com.game/ApplicationWindow#lblTitle2"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="show1" id="com.game/ApplicationWindow#show1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="show2" id="com.game/ApplicationWindow#show2"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="player" id="com.game/ApplicationWindow#player"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="opponent" id="com.game/ApplicationWindow#opponent"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nHP1" id="com.game/ApplicationWindow#nHP1"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nHP2" id="com.game/ApplicationWindow#nHP2"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="335,162">
+      <children xsi:type="editmodel:MethodEditModel" name="main" id="com.game/ApplicationWindow#main([Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="ApplicationWindow" id="com.game/ApplicationWindow#ApplicationWindow()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="firstLoading" id="com.game/ApplicationWindow#firstLoading()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="initialize" id="com.game/ApplicationWindow#initialize()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="fightingResult" id="com.game/ApplicationWindow#fightingResult(Lcom.game.Character;Lcom.game.Opponents;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="testOutput" id="com.game/ApplicationWindow#testOutput()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="showText" id="com.game/ApplicationWindow#showText(Ljavax.swing.JLabel;Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setHPValue" id="com.game/ApplicationWindow#setHPValue(Ljava.lang.Integer;Ljava.lang.Integer;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="playerSetting" id="com.game/ApplicationWindow#playerSetting()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" name="Opponents" location="450,435" size="406,445" id="com.game/Opponents" runTimeClassModel="Opponents(Ljava.lang.String;IIIILjava.lang.String;),setnSpd(I),Opponents(I),nDef,setsType(Ljava.lang.String;),nSpd,setnHP(I),getsType(),setnAtk(I),getOpponentsList(),getnAtk(),sType,opponentsList,getnHP(),setnDef(I),getsAI(),setsAI(Ljava.lang.String;),nHP,nAtk,sAI,getnDef(),getnSpd()">
+    <children xsi:type="editmodel:CompartmentEditModel" size="204,126">
+      <children xsi:type="editmodel:AttributeEditModel" name="sType" id="com.game/Opponents#sType"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nHP" id="com.game/Opponents#nHP"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nAtk" id="com.game/Opponents#nAtk"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nDef" id="com.game/Opponents#nDef"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="nSpd" id="com.game/Opponents#nSpd"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="sAI" id="com.game/Opponents#sAI"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="opponentsList" id="com.game/Opponents#opponentsList"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="383,270">
+      <children xsi:type="editmodel:MethodEditModel" name="getOpponentsList" id="com.game/Opponents#getOpponentsList()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Opponents" id="com.game/Opponents#Opponents(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Opponents" id="com.game/Opponents#Opponents(Ljava.lang.String;IIIILjava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getsType" id="com.game/Opponents#getsType()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setsType" id="com.game/Opponents#setsType(Ljava.lang.String;)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnHP" id="com.game/Opponents#getnHP()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnHP" id="com.game/Opponents#setnHP(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnAtk" id="com.game/Opponents#getnAtk()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnAtk" id="com.game/Opponents#setnAtk(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnDef" id="com.game/Opponents#getnDef()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnDef" id="com.game/Opponents#setnDef(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getnSpd" id="com.game/Opponents#getnSpd()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setnSpd" id="com.game/Opponents#setnSpd(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getsAI" id="com.game/Opponents#getsAI()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="setsAI" id="com.game/Opponents#setsAI(Ljava.lang.String;)"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <diagramOptions xsi:type="options:ClassDiagramOptions" interactive="false" level="-1" showScope="InPackage" properties="wireOptions=2;Product=eUML2;displayOptions=1"/>
+  <boardSetting snapToGeometry="true" gridEnabled="true" gridSpacing="15,15" gridOrigin="0,0" rulerUnit="pixel" gridVisibility="false">
+    <leftRuler/>
+    <topRuler/>
+  </boardSetting>
+  <classDiagramPreferences xsi:type="editmodel:UMLClassDiagramPreference" showPopupBars="true" showConnectionHandles="true" attributeSorter="Natural" methodSorter="Natural" showClassStereotype="true" showPackageStereotype="true" showDependencyStereotype="true" showInterfaceStereotype="true" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+</editmodel:ClassDiagramEditModel>

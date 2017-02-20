@@ -18,7 +18,7 @@ public class Character {
 		return WeaponList;
 	}
 	
-	public Character(int indexArmor,int indexWeapon) {
+	public Character(int nArmor,int nWeapon) {
 		ArmorList.clear();
 		WeaponList.clear();
 		ArmorList.add(new Armor("Light",15,-5));
@@ -30,9 +30,9 @@ public class Character {
 		WeaponList.add(new Weapon("Battle Axe",40,-20));
 		
 		this.HP=100;
-		this.Def=this.Def+ArmorList.get(indexArmor).getnDef();
-		this.Atk=this.Atk+WeaponList.get(indexWeapon).getnAtk();
-		this.Spd=this.Spd+ArmorList.get(indexArmor).getnSpdPlt()+WeaponList.get(indexWeapon).getnSpdPlt();
+		this.Def=this.Def+ArmorList.get(nArmor).getnDef();
+		this.Atk=this.Atk+WeaponList.get(nWeapon).getnAtk();
+		this.Spd=this.Spd+ArmorList.get(nArmor).getnSpdPlt()+WeaponList.get(nWeapon).getnSpdPlt();
 		
 	}
 	public Integer getHP() {
