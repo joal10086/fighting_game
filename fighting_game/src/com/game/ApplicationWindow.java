@@ -26,7 +26,7 @@ public class ApplicationWindow extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 2151022639739728226L;
-	public volatile boolean exit = false;   //
+	public volatile boolean tripled = false;   //
 	private JFrame frame;
 	private JFrame playerSetting;
 	private JFrame openging;
@@ -43,8 +43,6 @@ public class ApplicationWindow extends JFrame{
 	private ArrayList<Armor> ArmorList = new ArrayList<Armor>();
 	private ArrayList<Weapon> WeaponList = new ArrayList<Weapon>();
 	private ArrayList<Opponents> OpponentsList = new ArrayList<Opponents>();
-	
-	Thread th;
 	
 	private void dataInitial(){
 		ArmorList.add(new Armor("Light",15,-5));
@@ -110,7 +108,7 @@ public class ApplicationWindow extends JFrame{
 	    progressBar.setIndeterminate(false);
 	    
 		Random random = new Random();
-        th = new Thread(new Runnable() {
+       Thread th = new Thread(new Runnable() {
         	int progress = 0;
 			@Override
 			public void run() {
@@ -150,18 +148,15 @@ public class ApplicationWindow extends JFrame{
 		frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 		frame.getContentPane().setLayout(null);
 		
-		ImageIcon background = new ImageIcon("img/bg.jpg");// 背景图片
-		JLabel label = new JLabel(background);// 把背景图片显示在一个标签里面
-		// 把标签的大小位置设置为图片刚好填充整个面板
+		ImageIcon background = new ImageIcon("img/bg.jpg");//background image
+		JLabel label = new JLabel(background);// bg picture 
 		label.setBounds(0, 0, 550, 455);
-		// 把内容窗格转化为JPanel，否则不能用方法setOpaque()来使内容窗格透明
 		JPanel imagePanel = (JPanel) frame.getContentPane();
 		imagePanel.setOpaque(false);
-		// 内容窗格默认的布局管理器为BorderLayout
+		// set default container as BorderLayout
 		imagePanel.setLayout(null);
-		imagePanel.add(new JButton("测试按钮"));
 		frame.getLayeredPane().setLayout(null);
-		// 把背景图片添加到分层窗格的最底层作为背景
+		// set background image
 		frame.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
 		frame.setSize(550, 455);
 		frame.setResizable(false);
@@ -174,12 +169,13 @@ public class ApplicationWindow extends JFrame{
 						" Notification", JOptionPane.OK_CANCEL_OPTION);
 				if (JOptionPane.OK_OPTION == option) {
 					// conform button clicked,then exit 
-					exit = true;
+					/*// for Thread to stop
+					 * exit = true;
 					try {
 						th.join();
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
-					} 
+					} */
 			         System.out.println("Thread exit!"); 
 					frame.hide();
 					playerSetting.show();
@@ -194,7 +190,7 @@ public class ApplicationWindow extends JFrame{
 		frame.getContentPane().add(lblTitle1);
 		
 		JLabel lblTitle2 = new JLabel("Minotaur");
-		lblTitle2.setBounds(278, 11, 62, 14);
+		lblTitle2.setBounds(388, 11, 62, 14);
 		frame.getContentPane().add(lblTitle2);
 		
 		HP1 = new JProgressBar();
@@ -204,7 +200,7 @@ public class ApplicationWindow extends JFrame{
 		frame.getContentPane().add(HP1);
 		
 		HP2 = new JProgressBar();
-		HP2.setBounds(278, 29, 146, 14);
+		HP2.setBounds(388, 29, 146, 14);
 		HP2.setIndeterminate(false);
 		HP2.setStringPainted(true);
 		frame.getContentPane().add(HP2);
@@ -215,19 +211,28 @@ public class ApplicationWindow extends JFrame{
 		btnAttack.addActionListener(new ActionListener() {
 			
 			public void actionPerformed(ActionEvent arg0) {
-				setHPValue(1,testHP1);
-				testOutput();
+				fightingResult(player,opponent,"1");
 			}
 		});
-		btnAttack.setBounds(20, 50, 80, 23);
+		btnAttack.setBounds(20, 50, 101, 23);
 		frame.getContentPane().add(btnAttack);
 		
 		JButton btnDefend = new JButton("DEFEND");
-		btnDefend.setBounds(20, 80, 80, 23);
+		btnDefend.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fightingResult(player,opponent,"2");
+			}
+		});
+		btnDefend.setBounds(20, 80, 101, 23);
 		frame.getContentPane().add(btnDefend);
 		
 		JButton btnCharge = new JButton("CHARGE");
-		btnCharge.setBounds(20, 110, 80, 23);
+		btnCharge.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				fightingResult(player,opponent,"3");
+			}
+		});
+		btnCharge.setBounds(20, 110, 101, 23);
 		frame.getContentPane().add(btnCharge);
 		
 		labelHP_1 = new JLabel();
@@ -235,75 +240,86 @@ public class ApplicationWindow extends JFrame{
 		frame.getContentPane().add(labelHP_1);
 		
 		labelHP_2 = new JLabel();
-		labelHP_2.setBounds(378, 11, 46, 14);
+		labelHP_2.setBounds(488, 11, 46, 14);
 		frame.getContentPane().add(labelHP_2);
 		
 		show1 = new JLabel("New label");
-		show1.setBounds(110, 149, 301, 14);
+		show1.setBounds(127, 179, 301, 14);
 		frame.getContentPane().add(show1);
 		
 		show2 = new JLabel("New label");
-		show2.setBounds(278, 114, 46, 14);
+		show2.setBounds(382, 135, 46, 14);
 		frame.getContentPane().add(show2);
 		
 		
 	}
 	
-	// phase i, auto attack by Minotaur
-	public int fightingResult(Character first,Opponents second){
-		int r =0;
+	// fighting procedure to accept actions and  control the fighting data
+	public int fightingResult(Character first,Opponents second,String string){
+		
 		nHP1=first.getHP();
 		nHP2=second.getnHP();
-		
-         th= new Thread(new Runnable() {
-			@Override
-			public void run(){
-				  while (nHP1 > 0 && nHP2 > 0 &&(!exit)) {
-					   int nO2P= second.getnAtk()-first.getDef(); 
-					   int nP2O = first.getAtk()-second.getnDef();
-					   System.out.print("opponent attacks player:"+nO2P+">player attacks opponent:"+nP2O);
-					  /* if (nP2O>0){  // player attacks opponent
-						   nHP2-=nP2O;
-						   nHP2=nHP2<0?0:nHP2;
-					   }else */if (nO2P>0){  // opponent attacks player
-						   nHP1-=nO2P;
-						   nHP1=nHP1<0?0:nHP1;
-						   setHPValue(1,nHP1);
-						   setHPValue(2,nHP2);
-					   }else if (nO2P<=0){   //opponent can't attack player, set to game over
-						   nHP1=0;
-						   nHP2=0;
-						   showText(show1,"opponent can't attack player");
-					   }
-					  
-					  
+		System.out.println("first.getAtk()"+first.getAtk());
+		Thread th= new Thread(new Runnable() {
+			int r = 0;
 
-					  try {
-						Thread.sleep(800);
-					} catch (InterruptedException e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					} 
-		           }	
-			
-					if(nHP1 <= 0 || nHP2 <= 0){  // one of them has no HP, game over
-						int option = JOptionPane.showConfirmDialog(ApplicationWindow.this, "Game Over!",
-								" Notification", JOptionPane.DEFAULT_OPTION);
-							frame.hide();
-							playerSetting.show();
+			@Override
+			public void run() {
+
+				if (nHP1 > 0 && nHP2 > 0) { // game continue
+					if ("1".equals(string)) { // player attack
+						r = first.getAtk() - second.getnDef();
+						if (tripled) {
+							first.setAtk(first.getAtk() / 3);
+							tripled = false;
+						}
+
+					} else if ("2".equals(string)) { // player defend
+						r = (int) Math.ceil((first.getDef() - second.getnAtk()) / 2);
+					} else if ("3".equals(string)) { // player charge
+						r = first.getDef() - second.getnAtk();
+
+						if (!tripled) { // charge button first click
+							tripled = true;
+							first.setAtk(first.getAtk() * 3);
+						} else { // charge button click again
+							r = 0;
+							JOptionPane.showConfirmDialog(ApplicationWindow.this, "player already set to charge!",
+									" Notification", JOptionPane.DEFAULT_OPTION);
+						}
+
 					}
-					
-			}
-        	
-        });
-		th.start();// Thread started
-		
-		  //gameOver
-	
-		  
-		  
-		return r;
+
+				} else { // game over
+					JOptionPane.showConfirmDialog(ApplicationWindow.this, "Game Over!", " Notification",
+							JOptionPane.DEFAULT_OPTION);
+					frame.hide();
+					playerSetting.show();
+				}
+
+				if (r > 0) {
+					nHP2 -= r;
+					nHP2 = nHP2 < 0 ? 0 : nHP2;
+					setHPValue(2, nHP2);
+				} else {
+					nHP1 += r;
+					nHP1 = nHP1 < 0 ? 0 : nHP1;
+					setHPValue(1, nHP1);
+				}
+
+				// thread sleep
+				try {
+					Thread.sleep(800);
+				} catch (InterruptedException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+
+			}});
+		 th.start();// Thread started
+		return 0;
 	}
+	
 	// print for testing
 	private void testOutput(){
 		System.out.println("player HP:"+player.getHP());
@@ -324,7 +340,7 @@ public class ApplicationWindow extends JFrame{
 			Thread t = new Thread();
 			t.start();
 			try {
-				t.sleep(500);
+				t.sleep(800);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
@@ -473,8 +489,7 @@ public class ApplicationWindow extends JFrame{
 				setHPValue(2,opponent.getnHP());
 				
 				testOutput();
-				exit=false;
-				fightingResult(player,opponent);
+				fightingResult(player,opponent,"2");
 			 
 				
 				/*HP2.setValue(100);
