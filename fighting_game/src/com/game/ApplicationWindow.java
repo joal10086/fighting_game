@@ -500,4 +500,52 @@ public class ApplicationWindow extends JFrame{
 		
 		
 	}
+	/** 
+	 * @uml.property name="character"
+	 * @uml.associationEnd aggregation="composite" inverse="appWindow:com.game.Character"
+	 */
+	private Character character;
+
+
+	/** 
+	 * Getter of the property <tt>character</tt>
+	 * @return  Returns the character.
+	 * @uml.property  name="character"
+	 */
+	public Character getCharacter() {
+		return character;
+	}
+
+	/** 
+	 * Setter of the property <tt>character</tt>
+	 * @param character  The character to set.
+	 * @uml.property  name="character"
+	 */
+	public void setCharacter(Character character) {
+		this.character = character;
+	}
+	/**
+	 * @uml.property  name="opponents"
+	 * @uml.associationEnd  aggregation="composite" inverse="applicationWindow:com.game.Opponents"
+	 */
+	private Opponents opponents;
+
+
+	/**
+	 * Getter of the property <tt>opponents</tt>
+	 * @return  Returns the opponents.
+	 * @uml.property  name="opponents"
+	 */
+	public Opponents getOpponents() {
+		return opponents;
+	}
+
+	/**
+	 * Setter of the property <tt>opponents</tt>
+	 * @param opponents  The opponents to set.
+	 * @uml.property  name="opponents"
+	 */
+	public void setOpponents(Opponents opponents) {
+		this.opponents = opponents;
+	}
 }

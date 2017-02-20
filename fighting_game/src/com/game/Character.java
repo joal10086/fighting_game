@@ -59,6 +59,72 @@ public class Character {
 	public void setSpd(Integer spd) {
 		Spd = spd;
 	}
+	/** 
+	 * @uml.property name="appWindow"
+	 * @uml.associationEnd inverse="character:com.game.ApplicationWindow"
+	 */
+	private ApplicationWindow applicationWindow;
+
+	/** 
+	 * @uml.property name="weapon"
+	 * @uml.associationEnd aggregation="composite" inverse="character:com.game.Weapon"
+	 */
+	private Weapon weapon;
+
+	/** 
+	 * Getter of the property <tt>weapon</tt>
+	 * @return  Returns the weapon.
+	 * @uml.property  name="weapon"
+	 */
+	public Weapon getWeapon() {
+		return weapon;
+	}
+	/** 
+	 * Setter of the property <tt>weapon</tt>
+	 * @param weapon  The weapon to set.
+	 * @uml.property  name="weapon"
+	 */
+	public void setWeapon(Weapon weapon) {
+		this.weapon = weapon;
+	}
+	/**
+	 * @uml.property  name="armor"
+	 * @uml.associationEnd  aggregation="composite" inverse="character:com.game.Armor"
+	 */
+	private Armor armor;
+
+	/**
+	 * Getter of the property <tt>armor</tt>
+	 * @return  Returns the armor.
+	 * @uml.property  name="armor"
+	 */
+	public Armor getArmor() {
+		return armor;
+	}
+	/**
+	 * Setter of the property <tt>armor</tt>
+	 * @param armor  The armor to set.
+	 * @uml.property  name="armor"
+	 */
+	public void setArmor(Armor armor) {
+		this.armor = armor;
+	}
+	/**
+	 * Getter of the property <tt>appWindow</tt>
+	 * @return  Returns the applicationWindow.
+	 * @uml.property  name="appWindow"
+	 */
+	public ApplicationWindow getAppWindow() {
+		return applicationWindow;
+	}
+	/**
+	 * Setter of the property <tt>appWindow</tt>
+	 * @param appWindow  The applicationWindow to set.
+	 * @uml.property  name="appWindow"
+	 */
+	public void setAppWindow(ApplicationWindow appWindow) {
+		applicationWindow = appWindow;
+	}
 
 
 }

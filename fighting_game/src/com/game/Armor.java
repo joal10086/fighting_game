@@ -27,5 +27,26 @@ public class Armor {
 		this.nDef = nDef;
 		this.nSpdPlt = nSpdPlt;
 	}
+	/**
+	 * @uml.property  name="character"
+	 * @uml.associationEnd  inverse="armor:com.game.Character"
+	 */
+	private Character character;
+	/**
+	 * Getter of the property <tt>character</tt>
+	 * @return  Returns the character.
+	 * @uml.property  name="character"
+	 */
+	public Character getCharacter() {
+		return character;
+	}
+	/**
+	 * Setter of the property <tt>character</tt>
+	 * @param character  The character to set.
+	 * @uml.property  name="character"
+	 */
+	public void setCharacter(Character character) {
+		this.character = character;
+	}
 
 }

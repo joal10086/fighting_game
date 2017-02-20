@@ -74,6 +74,28 @@ public class Opponents {
 	public void setsAI(String sAI) {
 		this.sAI = sAI;
 	}
+	/**
+	 * @uml.property  name="applicationWindow"
+	 * @uml.associationEnd  inverse="opponents:com.game.ApplicationWindow"
+	 */
+	private ApplicationWindow applicationWindow;
+	/**
+	 * Getter of the property <tt>applicationWindow</tt>
+	 * @return  Returns the applicationWindow.
+	 * @uml.property  name="applicationWindow"
+	 */
+	public ApplicationWindow getApplicationWindow() {
+		return applicationWindow;
+	}
+
+	/**
+	 * Setter of the property <tt>applicationWindow</tt>
+	 * @param applicationWindow  The applicationWindow to set.
+	 * @uml.property  name="applicationWindow"
+	 */
+	public void setApplicationWindow(ApplicationWindow applicationWindow) {
+		this.applicationWindow = applicationWindow;
+	}
 	
 
 
