@@ -1,7 +1,6 @@
 package com.game;
 
 import java.awt.EventQueue;
-import java.awt.FlowLayout;
 
 import javax.swing.JFrame;
 import javax.swing.JLabel;
@@ -26,7 +25,7 @@ public class ApplicationWindow extends JFrame{
 	 * 
 	 */
 	private static final long serialVersionUID = 2151022639739728226L;
-	public volatile boolean tripled = false;   //
+	private boolean tripled = false;   //
 	private JFrame frame;
 	private JFrame playerSetting;
 	private JFrame openging;
@@ -34,30 +33,14 @@ public class ApplicationWindow extends JFrame{
 	private JProgressBar HP2;
 	private JLabel labelHP_1;
 	private JLabel labelHP_2;
+	private JLabel lblTitle2;
 	private JLabel show1;
 	private JLabel show2;
 	private Character player;
 	private Opponents opponent;
 	private int nHP1;
 	private int nHP2;
-	private ArrayList<Armor> ArmorList = new ArrayList<Armor>();
-	private ArrayList<Weapon> WeaponList = new ArrayList<Weapon>();
-	private ArrayList<Opponents> OpponentsList = new ArrayList<Opponents>();
 	
-	private void dataInitial(){
-		ArmorList.add(new Armor("Light",15,-5));
-		ArmorList.add(new Armor("Medium",25,-15));
-		ArmorList.add(new Armor("Heavy",35,-25));
-		
-		WeaponList.add(new Weapon("Dagger",20,0));
-		WeaponList.add(new Weapon("Sword",30,-10));
-		WeaponList.add(new Weapon("Battle Axe",40,-20));
-		
-		OpponentsList.add(new Opponents("Thief",150,20,10,40,""));
-		OpponentsList.add(new Opponents("Viking",250,30,20,30,""));
-		OpponentsList.add(new Opponents("Minotaur",350,40,30,20,""));
-		
-	}
 	
 	/**
 	 * Launch the application.
@@ -81,7 +64,6 @@ public class ApplicationWindow extends JFrame{
 	 * Constructor. Create the application.
 	 */
 	public ApplicationWindow() {
-		dataInitial();  //loading data
 		initialize();  //loading UI
 	}
 
@@ -150,7 +132,7 @@ public class ApplicationWindow extends JFrame{
 		
 		ImageIcon background = new ImageIcon("img/bg.jpg");//background image
 		JLabel label = new JLabel(background);// bg picture 
-		label.setBounds(0, 0, 550, 455);
+		label.setBounds(0, 0, 550, 455);  // set size of the label
 		JPanel imagePanel = (JPanel) frame.getContentPane();
 		imagePanel.setOpaque(false);
 		// set default container as BorderLayout
@@ -158,9 +140,7 @@ public class ApplicationWindow extends JFrame{
 		frame.getLayeredPane().setLayout(null);
 		// set background image
 		frame.getLayeredPane().add(label, new Integer(Integer.MIN_VALUE));
-		frame.setSize(550, 455);
 		frame.setResizable(false);
-		frame.setVisible(true);
 		
 		frame.addWindowListener(new WindowAdapter() {
 			public void windowClosing(WindowEvent e) {
@@ -189,7 +169,7 @@ public class ApplicationWindow extends JFrame{
 		lblTitle1.setBounds(10, 11, 46, 14);
 		frame.getContentPane().add(lblTitle1);
 		
-		JLabel lblTitle2 = new JLabel("Minotaur");
+		lblTitle2 = new JLabel("Minotaur");
 		lblTitle2.setBounds(388, 11, 62, 14);
 		frame.getContentPane().add(lblTitle2);
 		
@@ -386,12 +366,32 @@ public class ApplicationWindow extends JFrame{
 			}
 		});
 		
+		//get string from object lists
+		Character p = new Character(1,1);
+		Opponents o = new Opponents(1);
+		ArrayList<Armor> ArmorList = p.getArmorList();
+		ArrayList<Weapon> WeaponList = p.getWeaponList();
+		ArrayList<Opponents> OpponentsList = o.getOpponentsList();
+		String[] sArmor = new String[ArmorList.size()];
+		String[] sWeapon = new String[WeaponList.size()];
+		String[] sOpponent = new String[OpponentsList.size()];
+		for(int i=0;i<ArmorList.size();i++){
+			sArmor[i]=ArmorList.get(i).getsType();
+		}
+		for(int i=0;i<WeaponList.size();i++){
+			sWeapon[i]=WeaponList.get(i).getsType();
+		}
+		for(int i=0;i<OpponentsList.size();i++){
+			sOpponent[i]=OpponentsList.get(i).getsType();
+		}
+		
 		JLabel lblNewLabel = new JLabel("Armor:");
 		lblNewLabel.setBounds(59, 54, 84, 14);
 		playerSetting.getContentPane().add(lblNewLabel);
 		
+	
 		JComboBox comboBoxArmor = new JComboBox();
-		comboBoxArmor.setModel(new DefaultComboBoxModel(new String[] {ArmorList.get(0).getsType(), ArmorList.get(1).getsType(), ArmorList.get(2).getsType()}));
+		comboBoxArmor.setModel(new DefaultComboBoxModel(sArmor));
 		comboBoxArmor.setBounds(185, 54, 158, 20);
 		playerSetting.getContentPane().add(comboBoxArmor);
 		
@@ -401,7 +401,7 @@ public class ApplicationWindow extends JFrame{
 		
 		
 		JComboBox comboBoxWeapon = new JComboBox();
-		comboBoxWeapon.setModel(new DefaultComboBoxModel(new String[] {WeaponList.get(0).getsType(),WeaponList.get(1).getsType(),WeaponList.get(2).getsType()}));
+		comboBoxWeapon.setModel(new DefaultComboBoxModel(sWeapon));
 		comboBoxWeapon.setBounds(185, 94, 158, 20);
 		playerSetting.getContentPane().add(comboBoxWeapon);
 		
@@ -410,7 +410,7 @@ public class ApplicationWindow extends JFrame{
 		playerSetting.getContentPane().add(lblOpponent);
 		
 		JComboBox comboBoxOpponent = new JComboBox();
-		comboBoxOpponent.setModel(new DefaultComboBoxModel(new String[] {OpponentsList.get(0).getsType(),OpponentsList.get(1).getsType(),OpponentsList.get(2).getsType()}));
+		comboBoxOpponent.setModel(new DefaultComboBoxModel(sOpponent));
 		comboBoxOpponent.setBounds(185, 134, 158, 20);
 		playerSetting.getContentPane().add(comboBoxOpponent);
 		
@@ -458,9 +458,9 @@ public class ApplicationWindow extends JFrame{
 					}
 				};
 				
-				dataInitial();
-				player = new Character(ArmorList.get(indexArmor),WeaponList.get(indexWeapon));
-				opponent= OpponentsList.get(indexOpponent);
+				player = new Character(indexArmor,indexWeapon);
+				opponent= new Opponents(indexOpponent);
+				lblTitle2.setText(opponent.getsType()); //set name for opponent
 				
 				//take effects from the environment 
 				int indexEnvt=0;
