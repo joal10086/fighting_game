@@ -235,7 +235,7 @@ public class ApplicationWindow extends JFrame{
 	}
 	
 	// fighting procedure to accept actions and  control the fighting data
-	public void fightingResult(Character first,Opponents second,String string){
+	private void fightingResult(Character first,Opponents second,String string){
 		
 		nHP1=first.getHP();
 		nHP2=second.getnHP();
