@@ -235,7 +235,7 @@ public class ApplicationWindow extends JFrame{
 	}
 	
 	// fighting procedure to accept actions and  control the fighting data
-	public int fightingResult(Character first,Opponents second,String string){
+	public void fightingResult(Character first,Opponents second,String string){
 		
 		nHP1=first.getHP();
 		nHP2=second.getnHP();
@@ -297,7 +297,6 @@ public class ApplicationWindow extends JFrame{
 
 			}});
 		 th.start();// Thread started
-		return 0;
 	}
 	
 	// print for testing
