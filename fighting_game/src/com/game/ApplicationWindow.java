@@ -230,8 +230,8 @@ public class ApplicationWindow extends JFrame{
 		
 		//for fighting effect
 		labelFire = new JLabel();
-		labelFire.setBounds(204, 202, 186, 156);
-		labelFire.setIcon(new ImageIcon("img/test.png"));
+		labelFire.setBounds(0, 0, 550, 450);
+		labelFire.setIcon(new ImageIcon("img/elec.png"));
 		frame.getContentPane().add(labelFire);
 		
 		
