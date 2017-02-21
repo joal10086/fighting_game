@@ -309,19 +309,20 @@ public class ApplicationWindow extends JFrame{
 	//show text
 	private void showText(JLabel l,String s){
 		if (s.length() < 10) {
-			//labelFire.setVisible(true);
+			labelFire.setVisible(true);
 			l.setText("0".equals(s)?"":("-"+s));
 			Thread t = new Thread();
 			
 			try {
 				t.sleep(500);
 				l.setText("");
+				labelFire.setVisible(false);
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
 			
 			t.start();
-			//labelFire.setVisible(false);
+			
 		} else {
 			// test message
 			l.setText(s);
