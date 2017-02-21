@@ -33,7 +33,7 @@ public class ApplicationWindow extends JFrame{
 	private JProgressBar HP2;
 	private JLabel labelHP_1;
 	private JLabel labelHP_2;
-	private JLabel lblTitle2;
+	private JLabel labelFire;
 	private JLabel show1;
 	private JLabel show2;
 	private Character player;
@@ -169,9 +169,6 @@ public class ApplicationWindow extends JFrame{
 		lblTitle1.setBounds(10, 11, 46, 14);
 		frame.getContentPane().add(lblTitle1);
 		
-		lblTitle2 = new JLabel("Minotaur");
-		lblTitle2.setBounds(388, 11, 62, 14);
-		frame.getContentPane().add(lblTitle2);
 		
 		HP1 = new JProgressBar();
 		HP1.setBounds(10, 29, 146, 14);
@@ -231,6 +228,12 @@ public class ApplicationWindow extends JFrame{
 		show2.setBounds(382, 135, 46, 14);
 		frame.getContentPane().add(show2);
 		
+		//for fighting effect
+		labelFire = new JLabel();
+		labelFire.setBounds(204, 202, 186, 156);
+		labelFire.setIcon(new ImageIcon("img/test.png"));
+		frame.getContentPane().add(labelFire);
+		
 		
 	}
 	
@@ -286,17 +289,8 @@ public class ApplicationWindow extends JFrame{
 					nHP1 = nHP1 < 0 ? 0 : nHP1;
 					setHPValue(1, nHP1);
 				}
-
-				// thread sleep
-				try {
-					Thread.sleep(800);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-
 			}});
-		 th.start();// Thread started
+		th.start();
 	}
 	
 	// print for testing
@@ -315,15 +309,19 @@ public class ApplicationWindow extends JFrame{
 	//show text
 	private void showText(JLabel l,String s){
 		if (s.length() < 10) {
+			//labelFire.setVisible(true);
 			l.setText("0".equals(s)?"":("-"+s));
 			Thread t = new Thread();
-			t.start();
+			
 			try {
-				t.sleep(800);
+				t.sleep(500);
+				l.setText("");
 			} catch (InterruptedException e) {
 				e.printStackTrace();
 			}
-			l.setText("");
+			
+			t.start();
+			//labelFire.setVisible(false);
 		} else {
 			// test message
 			l.setText(s);
@@ -459,6 +457,10 @@ public class ApplicationWindow extends JFrame{
 				
 				player = new Character(indexArmor,indexWeapon);
 				opponent= new Opponents(indexOpponent);
+				
+				JLabel lblTitle2 = new JLabel();
+				lblTitle2.setBounds(388, 11, 62, 14);
+				frame.getContentPane().add(lblTitle2);
 				lblTitle2.setText(opponent.getsType()); //set name for opponent
 				
 				//take effects from the environment 
