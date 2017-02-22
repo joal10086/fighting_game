@@ -52,8 +52,8 @@ public class ApplicationWindow extends JFrame{
 			public void run() {
 				try {
 					ApplicationWindow window = new ApplicationWindow();
-					//window.openging.setVisible(true);
-					window.playerSetting.setVisible(true);
+					window.openging.setVisible(true);
+					window.playerSetting.setVisible(false);
 					window.frame.setVisible(false);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -100,7 +100,7 @@ public class ApplicationWindow extends JFrame{
 		                progress += random.nextInt(15);
 		                progressBar.setValue(progress);
 		                try {
-		                    Thread.sleep(random.nextInt(500)); // thread randomly slept
+		                    Thread.sleep(random.nextInt(800)); // thread randomly slept
 		                } catch (InterruptedException ignore) {
 		                }finally{
 		                	if (progress>=100){ // progress bar finished
@@ -121,7 +121,7 @@ public class ApplicationWindow extends JFrame{
 	 * Initialize the contents of the UI.
 	 */
 	private void initialize() {
-       // firstLoading();  //function for progressBar to take effect
+        firstLoading();  //function for progressBar to take effect
 		
 	    //player settings
 		playerSetting();
