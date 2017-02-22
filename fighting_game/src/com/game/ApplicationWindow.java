@@ -18,6 +18,8 @@ import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 import javax.swing.DefaultComboBoxModel;
 import javax.swing.ImageIcon;
+import java.awt.Font;
+import java.awt.Color;
 
 public class ApplicationWindow extends JFrame{
 
@@ -220,12 +222,12 @@ public class ApplicationWindow extends JFrame{
 		labelHP_2.setBounds(488, 11, 46, 14);
 		frame.getContentPane().add(labelHP_2);
 		
-		show1 = new JLabel("New label");
-		show1.setBounds(127, 179, 301, 14);
+		show1 = new JLabel();
+		show1.setBounds(45, 165, 67, 56);
 		frame.getContentPane().add(show1);
 		
-		show2 = new JLabel("New label");
-		show2.setBounds(382, 135, 46, 14);
+		show2 = new JLabel();
+		show2.setBounds(427, 90, 67, 56);
 		frame.getContentPane().add(show2);
 		
 		//for fighting effect
@@ -273,14 +275,9 @@ public class ApplicationWindow extends JFrame{
 
 					}
 
-				} else { // game over
-					JOptionPane.showConfirmDialog(ApplicationWindow.this, "Game Over!", " Notification",
-							JOptionPane.DEFAULT_OPTION);
-					frame.hide();
-					playerSetting.show();
-				}
+				} 
 
-				if (r > 0) {
+				if (r > 0) {  // compute the HP after fighting
 					nHP2 -= r;
 					nHP2 = nHP2 < 0 ? 0 : nHP2;
 					setHPValue(2, nHP2);
@@ -288,6 +285,13 @@ public class ApplicationWindow extends JFrame{
 					nHP1 += r;
 					nHP1 = nHP1 < 0 ? 0 : nHP1;
 					setHPValue(1, nHP1);
+				}
+				
+				if (nHP1<=0 || nHP2<=0){  // game over if one of them has no HP
+					JOptionPane.showConfirmDialog(ApplicationWindow.this, "Game Over!", " Notification",
+							JOptionPane.DEFAULT_OPTION);
+					frame.hide();
+					playerSetting.show();
 				}
 			}});
 		th.start();
@@ -309,8 +313,14 @@ public class ApplicationWindow extends JFrame{
 	//show text
 	private void showText(JLabel l,String s){
 		if (s.length() < 10) {
+			if ("0".equals(s)){  // no text to show
+				return;
+			}
+			l.setForeground(Color.RED);
+			l.setFont(new Font("Times New Roman", Font.BOLD, 30));
+			l.setText("-"+s);
 			labelFire.setVisible(true);
-			l.setText("0".equals(s)?"":("-"+s));
+			
 			Thread t = new Thread();
 			
 			try {
