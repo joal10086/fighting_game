@@ -537,28 +537,28 @@ public class ApplicationWindow extends JFrame{
 	public void setCharacter(Character character) {
 		this.character = character;
 	}
-	/**
-	 * @uml.property  name="opponents"
-	 * @uml.associationEnd  aggregation="composite" inverse="applicationWindow:com.game.Opponents"
+	/** 
+	 * @uml.property name="o"
+	 * @uml.associationEnd aggregation="composite" inverse="app:com.game.Opponents"
 	 */
 	private Opponents opponents;
 
 
 	/**
-	 * Getter of the property <tt>opponents</tt>
+	 * Getter of the property <tt>o</tt>
 	 * @return  Returns the opponents.
-	 * @uml.property  name="opponents"
+	 * @uml.property  name="o"
 	 */
-	public Opponents getOpponents() {
+	public Opponents getO() {
 		return opponents;
 	}
 
 	/**
-	 * Setter of the property <tt>opponents</tt>
-	 * @param opponents  The opponents to set.
-	 * @uml.property  name="opponents"
+	 * Setter of the property <tt>o</tt>
+	 * @param o  The opponents to set.
+	 * @uml.property  name="o"
 	 */
-	public void setOpponents(Opponents opponents) {
-		this.opponents = opponents;
+	public void setO(Opponents o) {
+		opponents = o;
 	}
 }
