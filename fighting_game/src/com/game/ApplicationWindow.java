@@ -40,6 +40,7 @@ public class ApplicationWindow extends JFrame{
 	private JLabel show2;
 	private Character player;
 	private Opponents opponent;
+	private Envt envt;
 	private int nHP1;
 	private int nHP2;
 	
@@ -253,7 +254,12 @@ public class ApplicationWindow extends JFrame{
 
 				if (nHP1 > 0 && nHP2 > 0) { // game continue
 					if ("1".equals(s)) { // player attack
-						r = C.getAtk() - O.getnDef();
+						if (C.getSpd()>=O.getnSpd()){
+							r = (C.getAtk() - O.getnDef())<0?0:(C.getAtk() - O.getnDef());
+						}else{
+							r = (O.getnAtk() - C.getDef())<0?0:(O.getnAtk() - C.getDef());
+						}
+						
 						if (tripled) {
 							C.setAtk(C.getAtk() / 3);
 							tripled = false;
@@ -281,7 +287,7 @@ public class ApplicationWindow extends JFrame{
 					nHP2 -= r;
 					nHP2 = nHP2 < 0 ? 0 : nHP2;
 					setHPValue(2, nHP2);
-				} else {
+				} else {  // defense is greater or equal than its opposite attack
 					nHP1 += r;
 					nHP1 = nHP1 < 0 ? 0 : nHP1;
 					setHPValue(1, nHP1);
@@ -313,13 +319,18 @@ public class ApplicationWindow extends JFrame{
 	//show text
 	private void showText(JLabel l,String s){
 		if (s.length() < 10) {
-			if ("0".equals(s)){  // no text to show
-				return;
-			}
 			l.setForeground(Color.RED);
 			l.setFont(new Font("Times New Roman", Font.BOLD, 30));
-			l.setText("-"+s);
 			labelFire.setVisible(true);
+			
+			if ("0".equals(s)){  // no text to show
+				l.setText("0");
+			}else{
+				l.setText("-"+s);
+			}
+			
+			
+			
 			
 			Thread t = new Thread();
 			
@@ -377,12 +388,16 @@ public class ApplicationWindow extends JFrame{
 		//get string from object lists
 		Character p = new Character(1,1);
 		Opponents o = new Opponents(1);
+		Envt e= new Envt(1);
 		ArrayList<Armor> ArmorList = p.getArmorList();
 		ArrayList<Weapon> WeaponList = p.getWeaponList();
 		ArrayList<Opponents> OpponentsList = o.getOpponentsList();
+		ArrayList<Envt> EnvtList = e.getEnvtList();
+		
 		String[] sArmor = new String[ArmorList.size()];
 		String[] sWeapon = new String[WeaponList.size()];
 		String[] sOpponent = new String[OpponentsList.size()];
+		String[] sEnvt = new String[EnvtList.size()];
 		for(int i=0;i<ArmorList.size();i++){
 			sArmor[i]=ArmorList.get(i).getsType();
 		}
@@ -391,6 +406,9 @@ public class ApplicationWindow extends JFrame{
 		}
 		for(int i=0;i<OpponentsList.size();i++){
 			sOpponent[i]=OpponentsList.get(i).getsType();
+		}
+		for(int i=0;i<EnvtList.size();i++){
+			sEnvt[i]=EnvtList.get(i).getsName();
 		}
 		
 		JLabel lblNewLabel = new JLabel("Armor:");
@@ -427,7 +445,7 @@ public class ApplicationWindow extends JFrame{
 		playerSetting.getContentPane().add(lblEnvironment);
 		
 		JComboBox comboBoxEnvt = new JComboBox();
-		comboBoxEnvt.setModel(new DefaultComboBoxModel(new String[] {"Arena", "Swamp", "Colosseum"}));
+		comboBoxEnvt.setModel(new DefaultComboBoxModel(sEnvt));
 		comboBoxEnvt.setBounds(185, 174, 158, 20);
 		playerSetting.getContentPane().add(comboBoxEnvt);
 		
@@ -469,6 +487,7 @@ public class ApplicationWindow extends JFrame{
 				player = new Character(indexArmor,indexWeapon);
 				opponent= new Opponents(indexOpponent);
 				
+				
 				JLabel lblTitle2 = new JLabel();
 				lblTitle2.setBounds(388, 11, 62, 14);
 				frame.getContentPane().add(lblTitle2);
@@ -482,12 +501,14 @@ public class ApplicationWindow extends JFrame{
 						break;
 					}
 				};
+				
+				envt= new Envt(indexEnvt);
 				if(indexEnvt==1){
-					player.setHP(player.getHP()-1);
-					opponent.setnAtk(opponent.getnAtk()+1);
+					setHPValue(1, (player.getHP()+ envt.getcPenalty()));
+					opponent.setnAtk(opponent.getnAtk()+envt.getoPenalty());
 				}else if (indexEnvt==2){
-					player.setAtk(player.getAtk()+1);
-					opponent.setnDef(opponent.getnDef()-1);
+					player.setAtk(player.getAtk()+ envt.getcPenalty());
+					opponent.setnDef(opponent.getnDef()+envt.getoPenalty());
 				}
 				
 				playerSetting.setVisible(false);
@@ -501,7 +522,6 @@ public class ApplicationWindow extends JFrame{
 				setHPValue(2,opponent.getnHP());
 				
 				testOutput();
-				fightingResult(player,opponent,"2");
 			 
 				
 				/*HP2.setValue(100);
