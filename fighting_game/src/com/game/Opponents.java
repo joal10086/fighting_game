@@ -96,6 +96,50 @@ public class Opponents {
 	public void setApp(ApplicationWindow app) {
 		applicationWindow = app;
 	}
+	/**
+	 * @uml.property  name="envt"
+	 * @uml.associationEnd  inverse="opponents:com.game.Envt"
+	 */
+	private Envt envt;
+	/**
+	 * Getter of the property <tt>envt</tt>
+	 * @return  Returns the envt.
+	 * @uml.property  name="envt"
+	 */
+	public Envt getEnvt() {
+		return envt;
+	}
+
+	/**
+	 * Setter of the property <tt>envt</tt>
+	 * @param envt  The envt to set.
+	 * @uml.property  name="envt"
+	 */
+	public void setEnvt(Envt envt) {
+		this.envt = envt;
+	}
+	/** 
+	 * @uml.property name="character"
+	 * @uml.associationEnd inverse="opponents:com.game.Character"
+	 */
+	private Character character;
+	/** 
+	 * Getter of the property <tt>character</tt>
+	 * @return  Returns the character.
+	 * @uml.property  name="character"
+	 */
+	public Character getCharacter() {
+		return character;
+	}
+
+	/** 
+	 * Setter of the property <tt>character</tt>
+	 * @param character  The character to set.
+	 * @uml.property  name="character"
+	 */
+	public void setCharacter(Character character) {
+		this.character = character;
+	}
 	
 
 
