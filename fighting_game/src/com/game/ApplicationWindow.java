@@ -28,6 +28,7 @@ public class ApplicationWindow extends JFrame{
 	 */
 	private static final long serialVersionUID = 2151022639739728226L;
 	private boolean tripled = false;   //
+	private boolean OpponentTripled = false;   //
 	private JFrame frame;
 	private JFrame playerSetting;
 	private JFrame openging;
@@ -158,11 +159,14 @@ public class ApplicationWindow extends JFrame{
 						th.join();
 					} catch (InterruptedException e1) {
 						e1.printStackTrace();
-					} */
-			         System.out.println("Thread exit!"); 
+					} 
+					System.out.println("Thread exit!"); 
+					 */
 					frame.hide();
 					playerSetting.show();
-				} else {
+				}else if(JOptionPane.CANCEL_OPTION == option){
+					System.exit(0);
+				}else {
 					ApplicationWindow.this.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
 				}
 			}
@@ -242,33 +246,66 @@ public class ApplicationWindow extends JFrame{
 	
 	// fighting procedure to accept actions and  control the fighting data
 	private void fightingResult(Character C,Opponents O,String s){
-		
 		nHP1=C.getHP();
 		nHP2=O.getnHP();
-		System.out.println("first.getAtk()"+C.getAtk());
+		System.out.println("first.getAtk()"+C.getAtk()+"second.getAtk()"+O.getnAtk());
+		System.out.println("first.getAtk()"+C.getSpd()+"second.getAtk()"+O.getnSpd());
 		Thread th= new Thread(new Runnable() {
 			int r = 0;
 
 			@Override
 			public void run() {
-
+				
 				if (nHP1 > 0 && nHP2 > 0) { // game continue
+					String tem = O.think();  // get the action value for opponent after thinking
+					System.out.println("think>>"+tem+">>action>"+s);
 					if ("1".equals(s)) { // player attack
-						if (C.getSpd()>=O.getnSpd()){
+						if ("0".equals(tem)){  //  after thinking, opponent will attack
+							
+							if (C.getSpd()>=O.getnSpd()){
+								r = (C.getAtk() - O.getnDef())<0?0:(C.getAtk() - O.getnDef());
+							}else{
+								r = (O.getnAtk() - C.getDef())<0?0:(O.getnAtk() - C.getDef());
+							}
+							
+							if (tripled) {
+								C.setAtk(C.getAtk() / 3);
+								tripled = false;
+							}
+							
+						if (OpponentTripled){  // check if opponent's attack is tripled
+							O.setnAtk(O.getnAtk()/3);
+							OpponentTripled=false;
+						}
+						}else if("1".equals(tem)){  // after thinking, opponent will defense
 							r = (C.getAtk() - O.getnDef())<0?0:(C.getAtk() - O.getnDef());
-						}else{
-							r = (O.getnAtk() - C.getDef())<0?0:(O.getnAtk() - C.getDef());
+						}else{  //   after thinking, opponent will charge
+							O.setnAtk(O.getnAtk()*3);
+							OpponentTripled=true;
+						}
+					} else if ("2".equals(s)) { // player defend
+						if ("0".equals(tem)){
+							r = (int) Math.ceil((C.getDef() - O.getnAtk()) / 2);
+							if (OpponentTripled){  // check if opponent's attack is tripled
+								O.setnAtk(O.getnAtk()/3);
+								OpponentTripled=false;
+							}
+						}else if("2".equals(tem)){
+							O.setnAtk(O.getnAtk()*3);
+							OpponentTripled=true;
+						}
+					} else if ("3".equals(s)) { // player charge
+						if("0".equals(tem)){
+							r = C.getDef() - O.getnAtk();
+							if (OpponentTripled){  // check if opponent's attack is tripled
+								O.setnAtk(O.getnAtk()/3);
+								OpponentTripled=false;
+							}
+						}else if("2".equals(tem)){
+							O.setnAtk(O.getnAtk()*3);
+							OpponentTripled=true;
 						}
 						
-						if (tripled) {
-							C.setAtk(C.getAtk() / 3);
-							tripled = false;
-						}
-
-					} else if ("2".equals(s)) { // player defend
-						r = (int) Math.ceil((C.getDef() - O.getnAtk()) / 2);
-					} else if ("3".equals(s)) { // player charge
-						r = C.getDef() - O.getnAtk();
 
 						if (!tripled) { // charge button first click
 							tripled = true;
@@ -282,12 +319,14 @@ public class ApplicationWindow extends JFrame{
 					}
 
 				} 
-
-				if (r > 0) {  // compute the HP after fighting
+				if (r == 0){  // no damage occur
+					setHPValue(1, nHP1);
+					setHPValue(2, nHP2);
+				}else if (r > 0) {  // compute the HP after fighting
 					nHP2 -= r;
 					nHP2 = nHP2 < 0 ? 0 : nHP2;
 					setHPValue(2, nHP2);
-				} else {  // defense is greater or equal than its opposite attack
+				} else {  // defense is less or equal than its opposite attack
 					nHP1 += r;
 					nHP1 = nHP1 < 0 ? 0 : nHP1;
 					setHPValue(1, nHP1);
