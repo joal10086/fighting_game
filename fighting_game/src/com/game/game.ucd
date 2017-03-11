@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="game" size="1203,900" id="com.game" metadata="uml2-1.0" initialized="true" scrolledY="8" tag="10" key="32303037303533312D3130206669676874696E675F67616D65">
-  <children xsi:type="editmodel:ClassEditModel" name="Weapon" location="900,30" size="360,232" id="com.game/Weapon" runTimeClassModel="">
-    <children xsi:type="editmodel:CompartmentEditModel" size="112,54">
+<editmodel:ClassDiagramEditModel xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:editmodel="editmodel.xmi" xmlns:options="options.xmi" name="game" size="1348,855" id="com.game" metadata="uml2-1.0" initialized="true" scrolledY="-5" tag="10" key="32303037303533312D3130206669676874696E675F67616D65">
+  <children xsi:type="editmodel:ClassEditModel" name="Weapon" location="1035,20" size="303,229" id="com.game/Weapon" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,54">
       <children xsi:type="editmodel:AttributeEditModel" name="sType" id="com.game/Weapon#sType"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nAtk" id="com.game/Weapon#nAtk"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nSpdPlt" id="com.game/Weapon#nSpdPlt"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="337,126">
+    <children xsi:type="editmodel:CompartmentEditModel" size="280,126">
       <children xsi:type="editmodel:MethodEditModel" name="getsType" id="com.game/Weapon#getsType()"/>
       <children xsi:type="editmodel:MethodEditModel" name="setsType" id="com.game/Weapon#setsType(Ljava.lang.String;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getnAtk" id="com.game/Weapon#getnAtk()"/>
@@ -17,25 +17,25 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/Weapon@weapon+com.game/Character@character" source="//@children.0" target="//@children.2" targetEnd="//@children.0/@sourceConnections.0/@children.1" label="//@children.0/@sourceConnections.0/@children.2" sourceEnd="//@children.0/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="weapon" location="0,116" id="com.game/Weapon@weapon+com.game/Character@character|com.game/Weapon#weapon" attachSource="true" multiplicityLabel="//@children.0/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.0/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - weapon" location="837,123" size="56,16" anchorKind="FirstPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="871,153" size="22,16" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="weapon" location="0,114" id="com.game/Weapon@weapon+com.game/Character@character|com.game/Weapon#weapon" attachSource="true" multiplicityLabel="//@children.0/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.0/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - weapon" location="978,113" size="50,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="1010,141" size="18,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="264,126" id="com.game/Weapon@weapon+com.game/Character@character|com.game/Character#character" multiplicityLabel="//@children.0/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.0/@sourceConnections.0/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" + character" location="811,123" size="70,16" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="811,153" size="22,16" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="227,134" id="com.game/Weapon@weapon+com.game/Character@character|com.game/Character#character" multiplicityLabel="//@children.0/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.0/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" + character" location="924,113" size="59,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="924,141" size="18,14" anchorKind="LastPart"/>
       </children>
-      <children xsi:type="editmodel:WireLabelEditModel" size="0,16" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Armor" location="1035,285" size="345,232" id="com.game/Armor" runTimeClassModel="">
-    <children xsi:type="editmodel:CompartmentEditModel" size="112,54">
+  <children xsi:type="editmodel:ClassEditModel" name="Armor" location="1035,285" size="293,229" id="com.game/Armor" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="94,54">
       <children xsi:type="editmodel:AttributeEditModel" name="sType" id="com.game/Armor#sType"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nDef" id="com.game/Armor#nDef"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nSpdPlt" id="com.game/Armor#nSpdPlt"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="322,126">
+    <children xsi:type="editmodel:CompartmentEditModel" size="270,126">
       <children xsi:type="editmodel:MethodEditModel" name="getsType" id="com.game/Armor#getsType()"/>
       <children xsi:type="editmodel:MethodEditModel" name="setsType" id="com.game/Armor#setsType(Ljava.lang.String;)"/>
       <children xsi:type="editmodel:MethodEditModel" name="getnDef" id="com.game/Armor#getnDef()"/>
@@ -46,20 +46,20 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/Character@character+com.game/Armor@armor" source="//@children.1" target="//@children.2" targetEnd="//@children.1/@sourceConnections.0/@children.1" label="//@children.1/@sourceConnections.0/@children.2" sourceEnd="//@children.1/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="armor" location="0,46" id="com.game/Character@character+com.game/Armor@armor|com.game/Armor#armor" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" + armor" location="979,308" size="49,16" anchorKind="FirstPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="1006,338" size="22,16" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="armor" location="0,34" id="com.game/Character@character+com.game/Armor@armor|com.game/Armor#armor" attachSource="true" multiplicityLabel="//@children.1/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - armor" location="990,298" size="38,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="1010,326" size="18,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="264,311" id="com.game/Character@character+com.game/Armor@armor|com.game/Character#character" multiplicityLabel="//@children.1/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - character" location="811,308" size="66,16" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="811,338" size="22,16" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="227,319" id="com.game/Character@character+com.game/Armor@armor|com.game/Character#character" multiplicityLabel="//@children.1/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.1/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - character" location="924,298" size="57,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="924,326" size="18,14" anchorKind="LastPart"/>
       </children>
-      <children xsi:type="editmodel:WireLabelEditModel" size="0,16" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0 //@children.1/@sourceConnections.0" name="Character" location="540,20" size="264,358" id="com.game/Character" runTimeClassModel="">
-    <children xsi:type="editmodel:CompartmentEditModel" size="211,108">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.0/@sourceConnections.0 //@children.1/@sourceConnections.0 //@children.4/@sourceConnections.2" name="Character" location="690,0" size="227,355" id="com.game/Character" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="178,108">
       <children xsi:type="editmodel:AttributeEditModel" name="hP" id="com.game/Character#hP"/>
       <children xsi:type="editmodel:AttributeEditModel" name="atk" id="com.game/Character#atk"/>
       <children xsi:type="editmodel:AttributeEditModel" name="def" id="com.game/Character#def"/>
@@ -67,7 +67,7 @@
       <children xsi:type="editmodel:AttributeEditModel" name="armorList" id="com.game/Character#armorList"/>
       <children xsi:type="editmodel:AttributeEditModel" name="weaponList" id="com.game/Character#weaponList"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="241,198">
+    <children xsi:type="editmodel:CompartmentEditModel" size="204,198">
       <children xsi:type="editmodel:MethodEditModel" name="getArmorList" id="com.game/Character#getArmorList()"/>
       <children xsi:type="editmodel:MethodEditModel" name="getWeaponList" id="com.game/Character#getWeaponList()"/>
       <children xsi:type="editmodel:MethodEditModel" name="Character" id="com.game/Character#Character(II)"/>
@@ -82,20 +82,31 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/Character@character+com.game/ApplicationWindow@appWindow" source="//@children.2" target="//@children.3" targetEnd="//@children.2/@sourceConnections.0/@children.1" label="//@children.2/@sourceConnections.0/@children.2" sourceEnd="//@children.2/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="0,178" id="com.game/Character@character+com.game/ApplicationWindow@appWindow|com.game/Character#character" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - character" location="467,175" size="66,16" anchorKind="FirstPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="511,205" size="22,16" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="0,187" id="com.game/Character@character+com.game/ApplicationWindow@appWindow|com.game/Character#character" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - character" location="626,166" size="57,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="665,194" size="18,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="appWindow" location="350,178" id="com.game/Character@character+com.game/ApplicationWindow@appWindow|com.game/ApplicationWindow#appWindow" multiplicityLabel="//@children.2/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" + appWindow" location="377,175" size="83,16" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="377,205" size="22,16" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="appWindow" location="297,167" id="com.game/Character@character+com.game/ApplicationWindow@appWindow|com.game/ApplicationWindow#appWindow" multiplicityLabel="//@children.2/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - appWindow" location="324,166" size="68,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="324,194" size="18,14" anchorKind="LastPart"/>
       </children>
-      <children xsi:type="editmodel:WireLabelEditModel" size="0,16" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/Envt@envt+com.game/Character@character" source="//@children.2" target="//@children.5" targetEnd="//@children.2/@sourceConnections.1/@children.1" label="//@children.2/@sourceConnections.1/@children.2" sourceEnd="//@children.2/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="0,234" id="com.game/Envt@envt+com.game/Character@character|com.game/Character#character" attachSource="true" multiplicityLabel="//@children.2/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.2/@sourceConnections.1/@children.0/@children.0" aggregationKind="Aggregration" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - character" location="626,213" size="57,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="665,241" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="envt" location="189,114" id="com.game/Envt@envt+com.game/Character@character|com.game/Envt#envt" multiplicityLabel="//@children.2/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.2/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - envt" location="616,213" size="31,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="616,241" size="18,14" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.4/@sourceConnections.0" name="ApplicationWindow" location="20,20" size="350,502" id="com.game/ApplicationWindow" runTimeClassModel="">
-    <children xsi:type="editmodel:CompartmentEditModel" size="146,288">
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.0 //@children.4/@sourceConnections.0 //@children.5/@sourceConnections.0" name="ApplicationWindow" location="20,20" size="297,499" id="com.game/ApplicationWindow" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="124,288">
       <children xsi:type="editmodel:AttributeEditModel" name="serialVersionUID" id="com.game/ApplicationWindow#serialVersionUID"/>
       <children xsi:type="editmodel:AttributeEditModel" name="tripled" id="com.game/ApplicationWindow#tripled"/>
       <children xsi:type="editmodel:AttributeEditModel" name="frame" id="com.game/ApplicationWindow#frame"/>
@@ -113,7 +124,7 @@
       <children xsi:type="editmodel:AttributeEditModel" name="nHP1" id="com.game/ApplicationWindow#nHP1"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nHP2" id="com.game/ApplicationWindow#nHP2"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="327,162">
+    <children xsi:type="editmodel:CompartmentEditModel" size="274,162">
       <children xsi:type="editmodel:MethodEditModel" name="getO" id="com.game/ApplicationWindow#getO()"/>
       <children xsi:type="editmodel:MethodEditModel" name="ApplicationWindow" id="com.game/ApplicationWindow#ApplicationWindow()"/>
       <children xsi:type="editmodel:MethodEditModel" name="firstLoading" id="com.game/ApplicationWindow#firstLoading()"/>
@@ -127,8 +138,8 @@
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
   </children>
-  <children xsi:type="editmodel:ClassEditModel" name="Opponents" location="465,390" size="490,448" id="com.game/Opponents" runTimeClassModel="">
-    <children xsi:type="editmodel:CompartmentEditModel" size="241,126">
+  <children xsi:type="editmodel:ClassEditModel" name="Opponents" location="465,405" size="406,445" id="com.game/Opponents" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="204,126">
       <children xsi:type="editmodel:AttributeEditModel" name="sType" id="com.game/Opponents#sType"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nHP" id="com.game/Opponents#nHP"/>
       <children xsi:type="editmodel:AttributeEditModel" name="nAtk" id="com.game/Opponents#nAtk"/>
@@ -137,7 +148,7 @@
       <children xsi:type="editmodel:AttributeEditModel" name="sAI" id="com.game/Opponents#sAI"/>
       <children xsi:type="editmodel:AttributeEditModel" name="opponentsList" id="com.game/Opponents#opponentsList"/>
     </children>
-    <children xsi:type="editmodel:CompartmentEditModel" size="467,270">
+    <children xsi:type="editmodel:CompartmentEditModel" size="383,270">
       <children xsi:type="editmodel:MethodEditModel" name="getOpponentsList" id="com.game/Opponents#getOpponentsList()"/>
       <children xsi:type="editmodel:MethodEditModel" name="Opponents" id="com.game/Opponents#Opponents(I)"/>
       <children xsi:type="editmodel:MethodEditModel" name="Opponents" id="com.game/Opponents#Opponents(Ljava.lang.String;IIIILjava.lang.String;)"/>
@@ -156,15 +167,66 @@
     </children>
     <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
     <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/ApplicationWindow@app+com.game/Opponents@o" source="//@children.4" target="//@children.3" targetEnd="//@children.4/@sourceConnections.0/@children.1" label="//@children.4/@sourceConnections.0/@children.2" sourceEnd="//@children.4/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
-      <children xsi:type="editmodel:AssociationEndEditModel" name="o" location="0,65" id="com.game/ApplicationWindow@app+com.game/Opponents@o|com.game/Opponents#o" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name="- o" location="443,462" size="15,16" anchorKind="FirstPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="436,432" size="22,16" anchorKind="FirstPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="o" location="0,57" id="com.game/ApplicationWindow@app+com.game/Opponents@o|com.game/Opponents#o" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - o" location="442,469" size="16,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="440,441" size="18,14" anchorKind="FirstPart"/>
       </children>
-      <children xsi:type="editmodel:AssociationEndEditModel" name="app" location="350,435" id="com.game/ApplicationWindow@app+com.game/Opponents@o|com.game/ApplicationWindow#app" multiplicityLabel="//@children.4/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.1/@children.0" navigable="true">
-        <children xsi:type="editmodel:LabelEditModel" name=" - app" location="377,432" size="33,16" anchorKind="LastPart"/>
-        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="377,462" size="22,16" anchorKind="LastPart"/>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="app" location="297,442" id="com.game/ApplicationWindow@app+com.game/Opponents@o|com.game/ApplicationWindow#app" multiplicityLabel="//@children.4/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.4/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - app" location="324,441" size="28,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="324,469" size="18,14" anchorKind="LastPart"/>
       </children>
-      <children xsi:type="editmodel:WireLabelEditModel" size="0,16" anchorKind="MiddlePart"/>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/Envt@envt+com.game/Opponents@opponents" source="//@children.4" target="//@children.5" targetEnd="//@children.4/@sourceConnections.1/@children.1" label="//@children.4/@sourceConnections.1/@children.2" sourceEnd="//@children.4/@sourceConnections.1/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="opponents" location="71,0" id="com.game/Envt@envt+com.game/Opponents@opponents|com.game/Opponents#opponents" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.1/@children.0/@children.1" roleLabel="//@children.4/@sourceConnections.1/@children.0/@children.0" aggregationKind="Aggregration" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - opponents" location="543,384" size="61,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="511,384" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="envt" location="116,229" id="com.game/Envt@envt+com.game/Opponents@opponents|com.game/Envt#envt" multiplicityLabel="//@children.4/@sourceConnections.1/@children.1/@children.1" roleLabel="//@children.4/@sourceConnections.1/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - envt" location="543,356" size="31,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="511,356" size="18,14" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/Character@character+com.game/Opponents@opponents" source="//@children.4" target="//@children.2" targetEnd="//@children.4/@sourceConnections.2/@children.1" label="//@children.4/@sourceConnections.2/@children.2" sourceEnd="//@children.4/@sourceConnections.2/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="opponents" location="315,0" id="com.game/Character@character+com.game/Opponents@opponents|com.game/Opponents#opponents" attachSource="true" multiplicityLabel="//@children.4/@sourceConnections.2/@children.0/@children.1" roleLabel="//@children.4/@sourceConnections.2/@children.0/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name="- opponents" location="787,384" size="58,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="755,384" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="character" location="90,355" id="com.game/Character@character+com.game/Opponents@opponents|com.game/Character#character" multiplicityLabel="//@children.4/@sourceConnections.2/@children.1/@children.1" roleLabel="//@children.4/@sourceConnections.2/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - character" location="787,362" size="57,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="755,362" size="18,14" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
+    </sourceConnections>
+    <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
+  </children>
+  <children xsi:type="editmodel:ClassEditModel" targetConnections="//@children.2/@sourceConnections.1 //@children.4/@sourceConnections.1" name="Envt" location="420,120" size="189,229" id="com.game/Envt" runTimeClassModel="">
+    <children xsi:type="editmodel:CompartmentEditModel" size="140,72">
+      <children xsi:type="editmodel:AttributeEditModel" name="sName" id="com.game/Envt#sName"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="cPenalty" id="com.game/Envt#cPenalty"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="oPenalty" id="com.game/Envt#oPenalty"/>
+      <children xsi:type="editmodel:AttributeEditModel" name="envtList" id="com.game/Envt#envtList"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="166,108">
+      <children xsi:type="editmodel:MethodEditModel" name="Envt" id="com.game/Envt#Envt(I)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="Envt" id="com.game/Envt#Envt(Ljava.lang.String;II)"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getsName" id="com.game/Envt#getsName()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getcPenalty" id="com.game/Envt#getcPenalty()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getoPenalty" id="com.game/Envt#getoPenalty()"/>
+      <children xsi:type="editmodel:MethodEditModel" name="getEnvtList" id="com.game/Envt#getEnvtList()"/>
+    </children>
+    <children xsi:type="editmodel:CompartmentEditModel" size="0,0"/>
+    <sourceConnections xsi:type="editmodel:AssociationEditModel" autoLocated="true" id="com.game/ApplicationWindow@applicationWindow+com.game/Envt@envt1" source="//@children.5" target="//@children.3" targetEnd="//@children.5/@sourceConnections.0/@children.1" label="//@children.5/@sourceConnections.0/@children.2" sourceEnd="//@children.5/@sourceConnections.0/@children.0" connectionRouterKind="Manhattan">
+      <children xsi:type="editmodel:AssociationEndEditModel" name="envt1" location="0,114" id="com.game/ApplicationWindow@applicationWindow+com.game/Envt@envt1|com.game/Envt#envt1" attachSource="true" multiplicityLabel="//@children.5/@sourceConnections.0/@children.0/@children.1" roleLabel="//@children.5/@sourceConnections.0/@children.0/@children.0" aggregationKind="Composition" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name="- envt1" location="379,213" size="34,14" anchorKind="FirstPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="395,241" size="18,14" anchorKind="FirstPart"/>
+      </children>
+      <children xsi:type="editmodel:AssociationEndEditModel" name="applicationWindow" location="297,214" id="com.game/ApplicationWindow@applicationWindow+com.game/Envt@envt1|com.game/ApplicationWindow#applicationWindow" multiplicityLabel="//@children.5/@sourceConnections.0/@children.1/@children.1" roleLabel="//@children.5/@sourceConnections.0/@children.1/@children.0" navigable="true">
+        <children xsi:type="editmodel:LabelEditModel" name=" - applicationWindow" location="324,213" size="101,14" anchorKind="LastPart"/>
+        <children xsi:type="editmodel:LabelEditModel" name="0..1" location="324,241" size="18,14" anchorKind="LastPart"/>
+      </children>
+      <children xsi:type="editmodel:WireLabelEditModel" size="0,14" anchorKind="MiddlePart"/>
     </sourceConnections>
     <classifierPreferences xsi:type="editmodel:UMLClassDiagramClassifierPreference" showStereotype="true" showMethodsParameterTypes="true" showMethodsReturnType="true" showMethodsParameterNames="true" attributeSorter="Natural" methodSorter="Natural" innerClassSorter="Natural" showPublicInnerClasses="true" showPackageInnerClasses="true" showStaticInnerClasses="true" packageIndication="3"/>
   </children>

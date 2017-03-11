@@ -620,4 +620,28 @@ public class ApplicationWindow extends JFrame{
 	public void setO(Opponents o) {
 		opponents = o;
 	}
+	/** 
+	 * @uml.property name="envt1"
+	 * @uml.associationEnd aggregation="composite" inverse="applicationWindow:com.game.Envt"
+	 */
+	private Envt envt1;
+
+
+	/** 
+	 * Getter of the property <tt>envt1</tt>
+	 * @return  Returns the envt1.
+	 * @uml.property  name="envt1"
+	 */
+	public Envt getEnvt1() {
+		return envt1;
+	}
+
+	/** 
+	 * Setter of the property <tt>envt1</tt>
+	 * @param envt1  The envt1 to set.
+	 * @uml.property  name="envt1"
+	 */
+	public void setEnvt1(Envt envt1) {
+		this.envt1 = envt1;
+	}
 }
