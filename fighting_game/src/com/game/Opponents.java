@@ -2,7 +2,7 @@ package com.game;
 
 import java.util.ArrayList;
 
-public class Opponents {
+public class Opponents extends OpponentP{
 	private String sType;
 	private Integer nHP;
 	private Integer nAtk;
@@ -17,9 +17,9 @@ public class Opponents {
 
 	public Opponents(int index) {
 		OpponentsList.clear();
-		OpponentsList.add(new Opponents("Thief",150,20,10,40,""));
-		OpponentsList.add(new Opponents("Viking",250,30,20,30,""));
-		OpponentsList.add(new Opponents("Minotaur",350,40,30,20,""));
+		OpponentsList.add(new Opponents("Thief",150,20,10,40,"000"));
+		OpponentsList.add(new Opponents("Viking",250,30,20,30,"010"));
+		OpponentsList.add(new Opponents("Minotaur",350,40,30,20,"012"));
 		
 		this.sType = OpponentsList.get(index).getsType();
 		this.nHP = OpponentsList.get(index).getnHP();
@@ -36,6 +36,14 @@ public class Opponents {
 		this.nDef = nDef;
 		this.nSpd = nSpd;
 		this.sAI = sAI;
+	}
+	
+	@Override
+	public String think() {
+		String action = this.sAI.substring(0, 1);
+		this.setsAI(this.sAI.substring(1, 3)+action);
+		System.out.println(this.getsAI());
+		return action;
 	}
 	
 	public String getsType() {
@@ -140,6 +148,8 @@ public class Opponents {
 	public void setCharacter(Character character) {
 		this.character = character;
 	}
+
+	
 	
 
 
