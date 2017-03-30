@@ -249,7 +249,8 @@ public class ApplicationWindow extends JFrame{
 		nHP1=C.getHP();
 		nHP2=O.getnHP();
 		System.out.println("first.getAtk()"+C.getAtk()+"second.getAtk()"+O.getnAtk());
-		System.out.println("first.getAtk()"+C.getSpd()+"second.getAtk()"+O.getnSpd());
+		System.out.println("first.speed()"+C.getSpd()+"second.speed()"+O.getnSpd());
+		System.out.println("first.speed()"+C.getDef()+"second.speed()"+O.getnDef());
 		Thread th= new Thread(new Runnable() {
 			int r = 0;
 
@@ -257,9 +258,10 @@ public class ApplicationWindow extends JFrame{
 			public void run() {
 				
 				if (nHP1 > 0 && nHP2 > 0) { // game continue
-					String tem = O.think();  // get the action value for opponent after thinking
-					System.out.println("think>>"+tem+">>action>"+s);
+					
+					
 					if ("1".equals(s)) { // player attack
+						String tem = O.think();  // get the action value for opponent after thinking
 						if ("0".equals(tem)){  //  after thinking, opponent will attack
 							
 							if (C.getSpd()>=O.getnSpd()){
@@ -278,12 +280,13 @@ public class ApplicationWindow extends JFrame{
 							OpponentTripled=false;
 						}
 						}else if("1".equals(tem)){  // after thinking, opponent will defense
-							r = (C.getAtk() - O.getnDef())<0?0:(C.getAtk() - O.getnDef());
+							r = (C.getAtk() - O.getnDef())<0?0:(int) Math.ceil((C.getAtk() - O.getnDef())/2);
 						}else{  //   after thinking, opponent will charge
 							O.setnAtk(O.getnAtk()*3);
 							OpponentTripled=true;
 						}
 					} else if ("2".equals(s)) { // player defend
+						String tem = O.think();  // get the action value for opponent after thinking
 						if ("0".equals(tem)){
 							r = (int) Math.ceil((C.getDef() - O.getnAtk()) / 2);
 							if (OpponentTripled){  // check if opponent's attack is tripled
@@ -295,6 +298,8 @@ public class ApplicationWindow extends JFrame{
 							OpponentTripled=true;
 						}
 					} else if ("3".equals(s)) { // player charge
+						if (!tripled) { // charge button first click
+							String tem = O.think();  // get the action value for opponent after thinking
 						if("0".equals(tem)){
 							r = C.getDef() - O.getnAtk();
 							if (OpponentTripled){  // check if opponent's attack is tripled
@@ -307,7 +312,7 @@ public class ApplicationWindow extends JFrame{
 						}
 						
 
-						if (!tripled) { // charge button first click
+						
 							tripled = true;
 							C.setAtk(C.getAtk() * 3);
 						} else { // charge button click again
@@ -430,12 +435,12 @@ public class ApplicationWindow extends JFrame{
 		Envt e= new Envt(1);
 		ArrayList<Armor> ArmorList = p.getArmorList();
 		ArrayList<Weapon> WeaponList = p.getWeaponList();
-		ArrayList<Opponents> OpponentsList = o.getOpponentsList();
+		//ArrayList<Opponents> OpponentsList = o.getOpponentsList();
 		ArrayList<Envt> EnvtList = e.getEnvtList();
 		
 		String[] sArmor = new String[ArmorList.size()];
 		String[] sWeapon = new String[WeaponList.size()];
-		String[] sOpponent = new String[OpponentsList.size()];
+		//String[] sOpponent = new String[OpponentsList.size()];
 		String[] sEnvt = new String[EnvtList.size()];
 		for(int i=0;i<ArmorList.size();i++){
 			sArmor[i]=ArmorList.get(i).getsType();
@@ -443,9 +448,9 @@ public class ApplicationWindow extends JFrame{
 		for(int i=0;i<WeaponList.size();i++){
 			sWeapon[i]=WeaponList.get(i).getsType();
 		}
-		for(int i=0;i<OpponentsList.size();i++){
+		/*for(int i=0;i<OpponentsList.size();i++){
 			sOpponent[i]=OpponentsList.get(i).getsType();
-		}
+		}*/
 		for(int i=0;i<EnvtList.size();i++){
 			sEnvt[i]=EnvtList.get(i).getsName();
 		}
@@ -475,7 +480,7 @@ public class ApplicationWindow extends JFrame{
 		playerSetting.getContentPane().add(lblOpponent);
 		
 		JComboBox comboBoxOpponent = new JComboBox();
-		comboBoxOpponent.setModel(new DefaultComboBoxModel(sOpponent));
+		comboBoxOpponent.setModel(new DefaultComboBoxModel(new String[] {"Thief", "Viking", "Minotaur"}));
 		comboBoxOpponent.setBounds(185, 134, 158, 20);
 		playerSetting.getContentPane().add(comboBoxOpponent);
 		
