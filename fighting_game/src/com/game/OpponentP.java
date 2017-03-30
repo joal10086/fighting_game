@@ -46,8 +46,8 @@ public abstract class OpponentP {
 	public void setsAI(String sAI) {
 		this.sAI = sAI;
 	}
-	public void createOpponent(String string, int i, int j, int k, int l, String sAI) {
-		this.sType = string;
+	public void createOpponent(String type, int i, int j, int k, int l, String sAI) {
+		this.sType = type;
 		this.nHP = i;
 		this.nAtk = j;
 		this.nDef = k;
