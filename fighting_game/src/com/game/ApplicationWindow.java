@@ -102,7 +102,7 @@ public class ApplicationWindow extends JFrame{
 		                progress += random.nextInt(15);
 		                progressBar.setValue(progress);
 		                try {
-		                    Thread.sleep(random.nextInt(800)); // thread randomly slept
+		                    Thread.sleep(random.nextInt(400)); // thread randomly slept
 		                } catch (InterruptedException ignore) {
 		                }finally{
 		                	if (progress>=100){ // progress bar finished
@@ -270,10 +270,7 @@ public class ApplicationWindow extends JFrame{
 								r = (O.getnAtk() - C.getDef())<0?0:(O.getnAtk() - C.getDef());
 							}
 							
-							if (tripled) {
-								C.setAtk(C.getAtk() / 3);
-								tripled = false;
-							}
+							
 							
 						if (OpponentTripled){  // check if opponent's attack is tripled
 							O.setnAtk(O.getnAtk()/3);
@@ -284,6 +281,10 @@ public class ApplicationWindow extends JFrame{
 						}else{  //   after thinking, opponent will charge
 							O.setnAtk(O.getnAtk()*3);
 							OpponentTripled=true;
+						}
+						if (tripled) {
+							C.setAtk(C.getAtk() / 3);
+							tripled = false;
 						}
 					} else if ("2".equals(s)) { // player defend
 						String tem = O.think();  // get the action value for opponent after thinking
